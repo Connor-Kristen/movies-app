@@ -1,23 +1,38 @@
 // functions to do the calling back and forth
 
 "use strict";
-
-
-$(document).ready(function () {
-
-
     const moviesURL = 'https://mewing-typical-stage.glitch.me/movies';
+    const omdbMainURL =  `http://www.omdbapi.com/?apikey=${omdbKey}`
+    const omdbPosters = 'http://img.omdbapi.com/'
+    let initialId = 4;
+    const newMovieObj = {
+        title: "",
+        rating: "",
+        poster: "",
+        year: "",
+        genre: "",
+        director: "",
+        plot: "",
+        actors: "",
+        id: initialId += 1
+    }
 
+    const addOption = {
+        method: 'POST',
+        body: JSON.stringify(newMovieObj)
+    }
     function moviesObjArr () {
-
         return fetch(moviesURL)
             .then(res => res.json())
             .catch(console.error)
     }
 
-    moviesObjArr().then(function() {
-        $('.loading-screen').hide();
-    });
+    fetch(`${omdbMainURL}&s=princess+bride`).then(res => res.json())
+        .then(console.log);
+
+    const addMovies = () =>
+        fetch(`${moviesURL}`, addOption)
+            .then(res => res.json());
 
 
 
@@ -33,5 +48,9 @@ $(document).ready(function () {
 
 
 
-});
+
+
+
+
+
 
