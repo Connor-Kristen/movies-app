@@ -34,3 +34,13 @@
     /*grid-column: 1 / span 12;*/
     border: 3px solid purple;
 }
+
+.modal {
+    width: 300px;
+    height: 500px;
+    background-color: orange;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
