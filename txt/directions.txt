@@ -10,15 +10,17 @@ Allow users to add new movies
 
 Create a form for adding a new movie that has fields for the movie's title and rating
 When the form is submitted, the page should not reload / refresh, instead, your javascript should make a POST request to /movies with the information the user put into the form
-Allow users to edit existing movies
 
+Allow users to edit existing movies
 Give users the option to edit an existing movie
 A form should be pre-populated with the selected movie's details
 Like creating a movie, this should not involve any page reloads, instead your javascript code should make an ajax request when the form is submitted.
-Delete movies
 
+Delete movies
 Each movie should have a "delete" button
 When this button is clicked, your javascript should send a DELETE request
+
+
 Bonuses
 Add a disabled attribute to buttons while their corresponding ajax request is still pending.
 Show a loading animation instead of just text that says "loading...".
