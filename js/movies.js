@@ -17,13 +17,14 @@ $(document).ready(function () {
     const buildHtml = ({title, plot}) => `<dl class="movieInfo">
                 <dt class="movie-title">${title}</dt>
                  <dd class="description">${plot}</dd>
-                                               </dl>`
+                                               </dl>
+                        <button>delete</button>`
     // add Promise.race to hide the Loading...
 
     const setHtml = () => {
         moviesObjArr().then(data => {
             for (const movies of data) {
-                movieContainer.html(buildHtml(movies))
+                movieContainer.append(buildHtml(movies))
             }
         })
     }
@@ -31,7 +32,6 @@ $(document).ready(function () {
 
 addMovie.on('click', () => {
     addMovies().then( () => {
-        movieContainer.append("hello");
     })
 })
 
