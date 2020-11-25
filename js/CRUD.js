@@ -28,8 +28,8 @@
             .catch(console.error)
     }
 
-    // fetch(`${omdbMainURL}&t=princess+bride&y=1987`).then(res => res.json())
-    //     .then(console.log);
+    fetch(`${omdbMainURL}&t=princess+bride&y=1987`).then(res => res.json())
+        .then(console.log);
 
     const addMovies = () =>
         fetch(`${moviesURL}`, addOption)
