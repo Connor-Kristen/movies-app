@@ -4,15 +4,16 @@
 $(document).ready(function () {
 
     $(".main-container").hide();
-    $(".movie-select").hide()
     const footer = $('.footer');
     const addMovie = $('.add-movie');
     const movieSelect = $(".movie-select")
 
+    movieSelect.hide()
+
     moviesObjArr().then(function () {
         $('.loading-screen').hide();
         $(".main-container").show();
-        $(".movie-select").show()
+        movieSelect.show();
     });
 
     moviesObjArr().then(console.log);
@@ -21,7 +22,7 @@ $(document).ready(function () {
     const buildHtml = ({title, plot}) => `<dl class="movieInfo">
                 <dt class="movie-title">${title}</dt>
                  <dd class="description">${plot}</dd>
-                  <button>delete</button>
+                 <button data-title=${title.split(" ").join("")}>delete</button>
                                                </dl>`
     // add Promise.race to hide the Loading...
 
@@ -35,10 +36,20 @@ $(document).ready(function () {
     }
     setHtml();
 
-addMovie.on('click', () => {
-    addMovies().then( () => {
-    })
-})
+    // addMovie.on('click', () => {
+    //     addMovies().then( () => {
+    //     })
+    // })
+
+    $('#add-movie').on("click", () =>  {
+        const title = $('#add-title').val();
+        const year = $('#add-year').val();
+        // figure out rating later
+        getMovieInfo(title, year)
+            .then(addMovies);
+    });
+
+
 
 
 });
