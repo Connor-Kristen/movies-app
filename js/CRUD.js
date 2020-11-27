@@ -3,44 +3,22 @@
 "use strict";
     const moviesURL = 'https://mewing-typical-stage.glitch.me/movies';
     const omdbMainURL =  `http://www.omdbapi.com/?apikey=${omdbKey}`
-    const omdbPosters = 'http://img.omdbapi.com/'
+    // const omdbPosters = 'http://img.omdbapi.com/'
 
-
-    function Constructor(movie) {
+function Constructor(movie) {
         const {
             title,
             year,
-            rating,
+            imdbRating,
+            userRating,
             poster,
             genre,
             director,
             plot,
-            actors
+            actors,
+            id
         } = movie;
         Object.assign(this, movie);
-        // this.id = 4;
-        // this.id += 1;
-    }
-
-    let movieConstructor = new Constructor({
-        title: "Lord of the Rings",
-        year: "2001",
-        rating: "5",
-        poster: "there will be a poster here",
-        genre: "Fantasy",
-        director: "Peter Jackson",
-        plot: "People forget about eagles for 3 whole movies.",
-        actors: "Elijah Wood"
-    })
-
-    movieConstructor.id = 5;
-
-
-    console.log(movieConstructor);
-
-
-    const addOption = {
-        method: 'POST',
     }
 
     function moviesObjArr () {
@@ -49,36 +27,37 @@
             .catch(console.error)
     }
 
-    fetch(`${omdbMainURL}&t=eureka`).then(res => res.json())
-        .then(console.log);
+    // fetch(`${omdbMainURL}&t=eureka`).then(res => res.json())
+    //     .then(console.log);
 
-    const addMovies = () =>
-        fetch(`${moviesURL}`, addOption)
-            .then(res => res.json());
+    const addMovies = (movieInfo) =>
+        fetch(`${moviesURL}`, {method: "POST",  headers: {'Content-Type': 'application/json'}, body: `${JSON.stringify(movieInfo)}`})
+            .then(res => res.json())
+            .catch(console.error)
 
-
-
-    function getMovieInfo (title, year) {
+    function getMovieInfo (title, year, rating) {
         return fetch(`${omdbMainURL}&t=${title}&y=${year}`)
             .then(res => res.json())
             .then(data => {
-            let Data = new Constructor({
-                title: data.Title,
-                year: data.Year,
-                rating: data.Ratings[0].Value,
-                poster: data.Poster,
-                genre: data.Genre,
-                director: data.Director,
-                plot: data.Plot,
-                actors: data.Actors
-            })
-                data.id = 5;
-                return Data;
+                return new Constructor({
+                    title: data.Title,
+                    year: data.Year,
+                    imdbRating: data.Ratings[0].Value,
+                    userRating: rating,
+                    poster: data.Poster,
+                    genre: data.Genre,
+                    director: data.Director,
+                    plot: data.Plot,
+                    actors: data.Actors,
+                    id: Date.now()
+                });
             })
             .catch(console.error);
     }
 
-    getMovieInfo("Lord of the Rings", "2001").then(console.log)
+// getMovieInfo("Lord of the Rings", "2001").then(data => {
+//     console.log(JSON.stringify(data));
+// })
 
     function deleteIds (id) {
             fetch(`${moviesURL}/${id}`, {"method": "delete"})
@@ -86,6 +65,12 @@
                 .then(console.log)
         }
 
+    // deleteIds(1606446082756);
+    // deleteIds(1606446232055);
+    // deleteIds(1606446370437);
+    // deleteIds(8);
+    // deleteIds(9);
+    // deleteIds(10);
     // deleteIds();
 
     // function that returns new movie object that we can add
