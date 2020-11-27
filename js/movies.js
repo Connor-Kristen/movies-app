@@ -6,7 +6,8 @@ $(document).ready(function () {
     $(".main-container").hide();
     const footer = $('.footer');
     const addMovie = $('.add-movie');
-    const movieSelect = $(".movie-select")
+    const movieSelect = $(".movie-select");
+    const editModal = $('.edit-movie-modal');
 
     movieSelect.hide()
 
@@ -23,9 +24,22 @@ $(document).ready(function () {
              <dl class="movieInfo">
                  <dt class="movie-title">${title}</dt>
                  <dd class="description">${plot}</dd>
-                 <button data-title=${id}>delete</button>
+                 <button class="delete-btn" data-id=${id}>delete</button>
              </dl>`
-    // add Promise.race to hide the Loading...
+
+    const buildEditTitles = (title) =>
+        `<div class="initial-pick">${title}</div>`
+
+    const renderEditTitles = () => {
+        moviesObjArr()
+            .then(data => {
+                for (const movies of data) {
+                editModal.append(buildEditTitles(movies.title))
+                }
+            })
+    }
+    renderEditTitles();
+
 
     const setHtml = () => {
         moviesObjArr().then(data => {
@@ -54,12 +68,22 @@ $(document).ready(function () {
         getMovieInfo(title, year)
             // .then(console.log)
             .then(data => addMovies(data)
-                .then(data => {movieSelect.append(buildHtml(data));}))
+                .then(data => {
+                    movieSelect.append(buildHtml(data));
+                    moviesObjArr().then(console.log);
+                }))
             .catch(console.error)
 
     });
 
-
+movieSelect.on('click', '.delete-btn', (e) => {
+    e.preventDefault();
+   deleteIds($(e.target).data('id'))
+       .then(() => {
+           console.log($(e.target).parent().css('display', 'none'));
+           moviesObjArr().then(console.log);
+       })
+})
 
 
 });
