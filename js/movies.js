@@ -31,7 +31,7 @@ $(document).ready(function () {
         moviesObjArr().then(data => {
             for (const movies of data) {
                 footer.html(buildHtml(movies));
-                movieSelect.append(buildHtml(movies));
+                movieSelect.append(buildHtml(movies))
             }
         })
     }
@@ -53,7 +53,8 @@ $(document).ready(function () {
         // figure out rating later
         getMovieInfo(title, year)
             // .then(console.log)
-            .then(data => console.log(JSON.stringify(data)))
+            .then(data => addMovies(data)
+                .then(data => {movieSelect.append(buildHtml(data));}))
             .catch(console.error)
 
     });

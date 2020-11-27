@@ -31,12 +31,9 @@ function Constructor(movie) {
     //     .then(console.log);
 
     const addMovies = (movieInfo) =>
-        fetch(`${moviesURL}`, {"method": "POST", "body": movieInfo})
+        fetch(`${moviesURL}`, {method: "POST",  headers: {'Content-Type': 'application/json'}, body: `${JSON.stringify(movieInfo)}`})
             .then(res => res.json())
-            .then(console.log)
             .catch(console.error)
-
-
 
     function getMovieInfo (title, year, rating) {
         return fetch(`${omdbMainURL}&t=${title}&y=${year}`)
@@ -68,6 +65,12 @@ function Constructor(movie) {
                 .then(console.log)
         }
 
-    // deleteIds(5);
+    // deleteIds(1606446082756);
+    // deleteIds(1606446232055);
+    // deleteIds(1606446370437);
+    // deleteIds(8);
+    // deleteIds(9);
+    // deleteIds(10);
+    // deleteIds();
 
     // function that returns new movie object that we can add
