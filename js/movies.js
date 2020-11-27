@@ -19,11 +19,12 @@ $(document).ready(function () {
     moviesObjArr().then(console.log);
 
 
-    const buildHtml = ({title, plot}) => `<dl class="movieInfo">
-                <dt class="movie-title">${title}</dt>
+    const buildHtml = ({title, plot, id}) => `
+             <dl class="movieInfo">
+                 <dt class="movie-title">${title}</dt>
                  <dd class="description">${plot}</dd>
-                 <button data-title=${title.split(" ").join("")}>delete</button>
-                                               </dl>`
+                 <button data-title=${id}>delete</button>
+             </dl>`
     // add Promise.race to hide the Loading...
 
     const setHtml = () => {
@@ -36,6 +37,11 @@ $(document).ready(function () {
     }
     setHtml();
 
+    // $('.star').each(function () {
+    //     console.log($(this).data('rated'));
+    //
+    // })
+
     // addMovie.on('click', () => {
     //     addMovies().then( () => {
     //     })
@@ -46,7 +52,10 @@ $(document).ready(function () {
         const year = $('#add-year').val();
         // figure out rating later
         getMovieInfo(title, year)
-            .then(addMovies);
+            // .then(console.log)
+            .then(data => console.log(JSON.stringify(data)))
+            .catch(console.error)
+
     });
 
 
