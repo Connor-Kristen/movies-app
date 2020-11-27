@@ -55,22 +55,18 @@ function Constructor(movie) {
             .catch(console.error);
     }
 
-// getMovieInfo("Lord of the Rings", "2001").then(data => {
-//     console.log(JSON.stringify(data));
-// })
-
     function deleteIds (id) {
-            fetch(`${moviesURL}/${id}`, {"method": "delete"})
+           return fetch(`${moviesURL}/${id}`, {"method": "delete"})
                 .then(res => res.json())
-                .then(console.log)
+               .catch(console.error)
         }
 
-    // deleteIds(1606446082756);
-    // deleteIds(1606446232055);
-    // deleteIds(1606446370437);
-    // deleteIds(8);
-    // deleteIds(9);
-    // deleteIds(10);
-    // deleteIds();
-
-    // function that returns new movie object that we can add
+    const editMovie = (inputArr, id) => {
+        inputArr.forEach((value) => {
+            if (value !== "") {
+               return fetch(`${moviesURL}/${id}`, {method: "PATCH", headers: {'Content-Type': 'application/json'}})
+                    .then(res => res.json())
+                    .catch(console.error)
+            }
+        })
+    }

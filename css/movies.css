@@ -58,6 +58,19 @@ body, html {
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 16px;
+    display: none;
+}
+
+.edit-movie-modal {
+    width: 75%;
+    height: auto;
+    max-width: 500px;
+    background-color: orange;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 16px;
     /*display: none;*/
 }
 
@@ -90,4 +103,8 @@ img {
 .star {
     color: #bbb;
     font-size: 1.5em;
+}
+
+.edit-movie-form, #edit, #edit-movie {
+    display: none;
 }
