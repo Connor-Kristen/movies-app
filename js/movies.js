@@ -4,7 +4,7 @@
 $(document).ready(function () {
 
     $(".main-container").hide();
-    const footer = $('.footer');
+    const infoBox = $('.info-box');
     const addMovie = $('#add-movie');
     const movieSelect = $(".movie-select");
     const editModal = $('.edit-movie-modal');
@@ -20,10 +20,12 @@ $(document).ready(function () {
     moviesObjArr().then(console.log);
 
 
-    const buildHtml = ({title, plot, id}) => `
+    const buildHtml = ({title, poster, id}) => `
              <dl class="movieInfo">
-                 <dt class="movie-title">${title}</dt>
-                 <dd class="description">${plot}</dd>
+                <div class="img">
+                    <img src=${poster} class="movie-poster">
+                </div>
+                <dt class="movie-title">${title}</dt>
                  <button class="delete-btn" data-id=${id}>delete</button>
              </dl>`
 
@@ -44,7 +46,7 @@ $(document).ready(function () {
     const setHtml = () => {
         moviesObjArr().then(data => {
             for (const movies of data) {
-                footer.html(buildHtml(movies));
+                // infoBox.html(buildHtml(movies));
                 movieSelect.append(buildHtml(movies))
             }
         })
@@ -156,6 +158,19 @@ $(document).ready(function () {
     $(document).click((e) => {
         if ($(e.target).closest('.edit-movie-modal, #edit').length === 0) {
             $('.edit-movie-modal').fadeOut();
+        }
+    })
+
+    $('.hamburger').on("click", function() {
+        $('.side-bar').animate({width: "toggle"}, 300)
+    })
+
+    $('.side-bar').hide();
+
+    $(document).click((e) => {
+        if ($(e.target).closest('.side-bar, .hamburger').length === 0) {
+            $('.side-bar').animate({"width": 0}, 300)
+
         }
     })
 
