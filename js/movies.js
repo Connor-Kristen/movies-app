@@ -49,6 +49,7 @@ $(document).ready(function () {
             }
         })
     }
+    setHtml();
     const editInfo = (obj) =>
         `<form class="edit-movie-form">
         <div id="edit">
@@ -76,20 +77,7 @@ $(document).ready(function () {
         <label for=${obj.actors}>Edit Actors</label>
         <input class="movie-inputs" id=${obj.actors} value="${obj.actors}\" type="text">
         <button id="edit-movie">Edit Movie</button>
-   
     </form>`
-
-
-
-    // $('.star').each(function () {
-    //     console.log($(this).data('rated'));
-    //
-    // })
-
-    // addMovie.on('click', () => {
-    //     addMovies().then( () => {
-    //     })
-    // })
 
     $('#add-movie').on("click", () =>  {
         const title = $('#add-title').val();
@@ -123,21 +111,33 @@ $(document).ready(function () {
                     if ($(e.target).data("attribute") === movies.id) {
                         editModal.html(editInfo(movies))
                     }
+                    submitEdit(data, $(e.target).data("attribute"))
                 }
-                $('#edit-movie').on("click", (e) => {
-                    e.preventDefault();
-                    const editArr = [];
-                    const test = $('.movie-inputs').map(function () {
-                        return $(this).val();
-                        // editArr.push($(this).val())
-                    })
-
-                    console.log(Object.assign({}, test));
-                    console.log(editArr);
-
-                })
             })
-    })
+    });
+
+    const submitEdit = (dataObj, id) => {
+        $('#edit-movie').on("click", (e) => {
+            e.preventDefault();
+            const change = $('.movie-inputs');
+            let movieInfoArray = Array.from(change.map(function () {
+                return $(this).val();
+            }))
+            editMovie({
+                title: movieInfoArray[0],
+                year: movieInfoArray[1],
+                imdbRating: movieInfoArray[2],
+                poster: movieInfoArray[3],
+                genre: movieInfoArray[4],
+                director: movieInfoArray[5],
+                plot: movieInfoArray[6],
+                actors: movieInfoArray[7],
+                id: id,
+            }, id).then(() => {
+                moviesObjArr().then(console.log);
+            })
+        })
+    }
 
 
 
