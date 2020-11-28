@@ -5,7 +5,7 @@ $(document).ready(function () {
 
     $(".main-container").hide();
     const footer = $('.footer');
-    const addMovie = $('.add-movie');
+    const addMovie = $('#add-movie');
     const movieSelect = $(".movie-select");
     const editModal = $('.edit-movie-modal');
 
@@ -79,7 +79,7 @@ $(document).ready(function () {
         <button id="edit-movie">Edit Movie</button>
     </form>`
 
-    $('#add-movie').on("click", () =>  {
+    addMovie.on("click", () =>  {
         const title = $('#add-title').val();
         const year = $('#add-year').val();
         // figure out rating later
@@ -139,6 +139,25 @@ $(document).ready(function () {
         })
     }
 
+    $('#add').on('click', () => {
+        $('.modal').fadeIn();
+
+    })
+    $(document).click((e) => {
+        if ($(e.target).closest('.modal, #add').length === 0) {
+            $('.modal').fadeOut();
+        }
+    })
+
+    $('#edit').on('click', () => {
+        $('.edit-movie-modal').fadeIn();
+
+    })
+    $(document).click((e) => {
+        if ($(e.target).closest('.edit-movie-modal, #edit').length === 0) {
+            $('.edit-movie-modal').fadeOut();
+        }
+    })
 
 
 });
