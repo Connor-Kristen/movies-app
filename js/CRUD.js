@@ -61,12 +61,9 @@ function Constructor(movie) {
                .catch(console.error)
         }
 
-    const editMovie = (inputArr, id) => {
-        inputArr.forEach((value) => {
-            if (value !== undefined) {
-               return fetch(`${moviesURL}/${id}`, {method: "PATCH", headers: {'Content-Type': 'application/json'}})
+    const editMovie = (movieObj, id) => {
+               return fetch(`${moviesURL}/${id}`, {method: "PATCH", headers: {'Content-Type': 'application/json'},
+                   body: `${JSON.stringify(movieObj)}`})
                     .then(res => res.json())
                     .catch(console.error)
-            }
-        })
     }

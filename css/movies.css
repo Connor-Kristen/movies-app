@@ -71,7 +71,7 @@ body, html {
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 16px;
-    /*display: none;*/
+    display: none;
 }
 
 input::-webkit-outer-spin-button,
@@ -107,4 +107,12 @@ img {
 
 #edit, #edit-movie {
     /*display: none;*/
+}
+
+.close {
+    float: right;
+}
+
+.movie-functions {
+    cursor: pointer;
 }
