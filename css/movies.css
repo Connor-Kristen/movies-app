@@ -13,12 +13,19 @@ body, html {
 }
 .hamburger {
     height: 100%;
+    min-height: 48px;
     flex-basis: 70px;
     background: #bbbbbb;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
 
+}
+
+.banner-add {
+    width: 100%;
+    height: 50px;
+    color: white;
 }
 
 .bars {
@@ -35,23 +42,21 @@ i {
     margin-right: 10px;
 }
 
-a {
-   /*flex-grow: 1;*/
-}
 
 .main-container {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(12, 1fr);
-    width: 100vw;
-    height: 100vh;
+    grid-template-rows: repeat(24, 1fr);
+    width: 100%;
+    height: 200%;
+    /*max-width: 1400px;*/
+    margin: auto;
 }
 
 .nav {
-    grid-area: 1 / 1 / span 1 / span 12;
-    /*grid-column: 1 / span 12;*/
     position: -webkit-sticky;
     position: sticky;
+    width: 100vw;
     top: 0;
     background: rgba(0,0,0,.5);
     display: flex;
@@ -60,16 +65,26 @@ a {
 
 }
 
+.main-wrapper {
+    margin: auto;
+    height: 100%;
+    /*max-width: 1400px;*/
+}
+
 .side-bar {
-    /*grid-area: 3 / 1 / span 9 / span 2;*/
     height: 100%;
     width: 150px;
-    /*grid-column: 1 / span 3;*/
-    border: 1px inset black;
     position: fixed;
-    background: rgba(59, 58, 58, .8);
+    background: rgb(59, 58, 58);
     color: white;
-    /*display: none;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#close-side {
+    align-self: flex-end;
+    padding: 5px;
 }
 
 @keyframes sidebarTransition {
@@ -79,14 +94,16 @@ a {
 
 
 .movie-container {
-    grid-area: 3 / 3 / span 8 / span 8;
+    grid-area: 2 / 4 / span 6 / span 6;
     /*grid-column: 4 / span 8;*/
 }
 
 .info-box {
-    grid-area: 12 / 1 / span 1 / span 12;
-
-    /*grid-column: 1 / span 12;*/
+    height: 15%;
+    width: 150%;
+    position: relative;
+    top: 5%;
+    right: 25%;
     border: 3px solid purple;
 }
 
@@ -123,21 +140,18 @@ input::-webkit-inner-spin-button {
 }
 
 .img {
-    width: 18rem;
+
 }
 
 .movie-poster {
     max-height: 436px;
+    width: 12rem;
 }
 
 
 .star {
     color: #bbb;
     font-size: 1.5em;
-}
-
-#edit, #edit-movie {
-    /*display: none;*/
 }
 
 .close {
@@ -154,29 +168,43 @@ input::-webkit-inner-spin-button {
 }
 
 .movie-select {
+    grid-area: 9 / 1 / span 11 / span 12;
     margin-top: 50px;
+    text-align: center;
+    display: flex;
+    overflow-x: auto;
 }
 
-@media screen and (min-width: 500px) {
-    .info-box {
-        grid-area: 12 / 1 / span 1 / span 12;
-        position: relative;
-        top: 50px;
+dl {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    width: 12rem;
+}
 
+@media screen and (min-width: 456px) {
+    .movie-select {
+        grid-area: 12 / 1 / span 11 / span 12;
     }
-
 }
+
+/*@media screen and (min-width: 596px) {*/
+/*
+/*}*/
 
 @media screen and (min-width: 768px) {
     .info-box {
         grid-area: 5 / 8 / span 4 / span 4;
     }
-    .movie-container {
-        grid-area: 3 / 2 / span 8 / span 8;
-        /*grid-column: 4 / span 8;*/
-    }
+    /*.movie-container {*/
+    /*    grid-area: 3 / 2 / span 8 / span 8;*/
+    /*    !*grid-column: 4 / span 8;*!*/
+    /*}*/
     .movie-select {
-        margin-top: 0;
+        position: absolute;
+        top: 900px;
         color: white;
         width: 100vw;
         display: flex;
@@ -193,9 +221,6 @@ input::-webkit-inner-spin-button {
         display: inline-block;
         width: 50%;
 
-    }
-    .img {
-        margin: 10px;
     }
 
 }
