@@ -174,7 +174,7 @@ $(document).ready(function () {
         }
     })
 
-    $('.side-bar').css("width", 0)
+    $('.side-bar').css({width: 0})
     $('.movie-functions').css('font-size', 0)
     $('.hamburger').on("click", function() {
         $('.side-bar').animate({width: "150px"}, 300);
@@ -188,9 +188,17 @@ $(document).ready(function () {
         }
     })
 
-    $('body').on('click', '.img', function () {
-
-    })
-
+    // $('body').on('click', '.img', function () {
+    //
+    // })
+    // let initialPos = $(window).scrollTop();
+$(window).scroll(function () {
+    const currentPos = $(this).scrollTop();
+    if (currentPos >=parseFloat($('.banner-add').css('height'))) {
+          $('.nav').css({position: 'fixed', 'background-color': 'rgba(0,0,0,.5)'});
+    } else {
+        $('.nav').css({position: 'static', 'background-color': 'transparent'});
+    }
+})
 
 });
