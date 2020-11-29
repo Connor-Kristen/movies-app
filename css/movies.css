@@ -11,6 +11,14 @@ body, html {
     background: #292626;
 
 }
+
+#add-movie {
+    flex-basis: 30px;
+    width: 100px;
+    align-self: center;
+    margin-top: 20px;
+}
+
 .hamburger {
     height: 100%;
     min-height: 48px;
@@ -80,6 +88,20 @@ i {
     display: flex;
     flex-direction: column;
     align-items: center;
+    z-index: 1;
+    /*top: 0;*/
+    /*bottom: -50px;*/
+}
+
+.title-year-inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#add-title, #add-year {
+    width: 75%;
+    height: 25px;
 }
 
 #close-side {
@@ -99,17 +121,19 @@ i {
 }
 
 .info-box {
-    height: 15%;
+    height: 85px;
     width: 150%;
     position: relative;
     top: 5%;
     right: 25%;
-    border: 3px solid purple;
+    display: grid;
+    grid-template: repeat(6, 1fr) / 1fr 1fr;
+    overflow-y: auto;
 }
 
 .modal {
-    width: 75%;
-    height: auto;
+    width: 60%;
+    height: 300px;
     max-width: 500px;
     background-color: orange;
     position: absolute;
@@ -117,7 +141,10 @@ i {
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 16px;
-    display: none;
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+    align-items: center;
 }
 
 .edit-movie-modal {
@@ -190,13 +217,19 @@ dl {
     }
 }
 
-/*@media screen and (min-width: 596px) {*/
-/*
-/*}*/
+@media screen and (min-width: 596px) {
+    .movie-select {
+        grid-area: 13 / 1 / span 11 / span 12;
+    }
+    .info-box {
+        height: 75px;
+    }
+}
 
 @media screen and (min-width: 768px) {
     .info-box {
-        grid-area: 5 / 8 / span 4 / span 4;
+        /*grid-area: 5 / 8 / span 4 / span 4;*/
+        height: 150px;
     }
     /*.movie-container {*/
     /*    grid-area: 3 / 2 / span 8 / span 8;*/
