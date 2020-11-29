@@ -54,30 +54,30 @@ $(document).ready(function () {
     setHtml();
     const editInfo = (obj) =>
         `<form class="edit-movie-form">
-        <div id="edit">
-            <span>Edit User Score</span>
-            <i class="fas fa-star star" data-rated="1"></i>
-            <i class="fas fa-star star" data-rated="2"></i>
-            <i class="fas fa-star star" data-rated="3"></i>
-            <i class="fas fa-star star" data-rated="4"></i>
-            <i class="fas fa-star star" data-rated="5"></i>
-        </div>
-        <label for=${obj.title}>Edit Title</label>
-        <input class="movie-inputs" id=${obj.title} value="${obj.title}\" type="text">
-        <label for=${obj.year}>Edit Year</label>
-        <input class="movie-inputs" id=${obj.year} value=${obj.year} type="number">
-        <label for=${obj.poster}>Edit Poster URL</label>
-        <input class="movie-inputs" id=${obj.poster} value="${obj.poster}\" type="text">
-        <label for=${obj.genre}>Edit Genre</label>
-        <input class="movie-inputs" id=${obj.genre} value="${obj.genre}\" type="text">
-        <label for=${obj.director}>Edit Director</label>
-        <input class="movie-inputs" id=${obj.director} value="${obj.director}\" type="text">
-        <label for=${obj.plot}>Edit Plot</label>
-        <textarea class="movie-inputs" id=${obj.plot}>${obj.plot}</textarea>
-        <label for=${obj.actors}>Edit Actors</label>
-        <input class="movie-inputs" id=${obj.actors} value="${obj.actors}\" type="text">
-        <button id="edit-movie">Edit Movie</button>
-    </form>`
+            <div id="edit">
+                <span>Edit User Score</span>
+                <i class="fas fa-star star" data-rated="1"></i>
+                <i class="fas fa-star star" data-rated="2"></i>
+                <i class="fas fa-star star" data-rated="3"></i>
+                <i class="fas fa-star star" data-rated="4"></i>
+                <i class="fas fa-star star" data-rated="5"></i>
+            </div>
+            <label for=${obj.title}>Edit Title</label>
+            <input class="movie-inputs" id=${obj.title} value="${obj.title}\" type="text">
+            <label for=${obj.year}>Edit Year</label>
+            <input class="movie-inputs" id=${obj.year} value=${obj.year} type="number">
+            <label for=${obj.poster}>Edit Poster URL</label>
+            <input class="movie-inputs" id=${obj.poster} value="${obj.poster}\" type="text">
+            <label for=${obj.genre}>Edit Genre</label>
+            <input class="movie-inputs" id=${obj.genre} value="${obj.genre}\" type="text">
+            <label for=${obj.director}>Edit Director</label>
+            <input class="movie-inputs" id=${obj.director} value="${obj.director}\" type="text">
+            <label for=${obj.plot}>Edit Plot</label>
+            <textarea class="movie-inputs" id=${obj.plot}>${obj.plot}</textarea>
+            <label for=${obj.actors}>Edit Actors</label>
+            <input class="movie-inputs" id=${obj.actors} value="${obj.actors}\" type="text">
+            <button id="edit-movie">Edit Movie</button>
+        </form>`
 
 
     const setRatings = (ratingArr) => {
@@ -89,19 +89,19 @@ $(document).ready(function () {
         return html;
     }
 
-    addMovie.on("click", () =>  {
+    $('.star').on('click', function () {
         const title = $('#add-title').val();
         const year = $('#add-year').val();
-        // figure out rating later
-        getMovieInfo(title, year)
-            .then(data => addMovies(data)
-                .then(data => {
-                    movieSelect.append(buildHtml(data));
-                    moviesObjArr().then(console.log);
-                }))
-            .catch(console.error)
-
-    });
+        getMovieInfo(title, year, $(this).data('rated'))
+            .then(data => addMovie.on("click", () =>  {
+                        addMovies(data)
+                        .then(data => {
+                            movieSelect.append(buildHtml(data));
+                            moviesObjArr().then(console.log);
+                        })
+                        .catch(console.error)
+            }))
+    })
 
     movieSelect.on('click', '.delete-btn', (e) => {
         e.preventDefault();
