@@ -153,6 +153,8 @@ $(document).ready(function () {
         })
     }
 
+    $('.modal').hide();
+
     $('#add').on('click', () => {
         $('.modal').fadeIn();
 
@@ -188,17 +190,48 @@ $(document).ready(function () {
         }
     })
 
-    // $('body').on('click', '.img', function () {
-    //
-    // })
-    // let initialPos = $(window).scrollTop();
-$(window).scroll(function () {
+    function buildHtmlInfoBox (movie) {
+        const {title, year, plot, actors, director, criticRatings} = movie;
+        let html = `
+            <div id="title-info">Title: ${title}</div>
+            <div id="year-info">Year: ${year}</div>
+            <div id="plot-info">Plot: ${plot}</div>
+            <div id="actors-info">Actors: ${actors}</div>
+            <div id="directors-info">Directors: ${director}</div>
+        `
+
+        criticRatings.forEach(function(rating) {
+            html += `<div id='ratings-info'>${rating.Source} -> ${rating.Value}</div>
+        `
+        })
+        // console.log(movie);
+        return html;
+    }
+
+    $('body').on('click', '.img', function () {
+        appendInfo($(this).data('id'))
+            .then(data => {
+                $('.info-box').html(buildHtmlInfoBox(data))
+                console.log(data);
+            })
+
+    })
+
+
+    $(window).scroll(function () {
     const currentPos = $(this).scrollTop();
     if (currentPos >=parseFloat($('.banner-add').css('height'))) {
           $('.nav').css({position: 'fixed', 'background-color': 'rgba(0,0,0,.5)'});
+        $('.side-bar').css({top: 0});
     } else {
         $('.nav').css({position: 'static', 'background-color': 'transparent'});
+        $('.side-bar').offset({top: 50});
     }
 })
+
+    $('#close-side').on("click", function () {
+        $('.side-bar').animate({"width": 0}, 300);
+        $('.movie-functions').animate({'font-size': 0}, 300);
+    })
 
 });

@@ -4,6 +4,7 @@
     const moviesURL = 'https://mewing-typical-stage.glitch.me/movies';
     const omdbMainURL =  `http://www.omdbapi.com/?apikey=${omdbKey}`
     // const omdbPosters = 'http://img.omdbapi.com/'
+    const header = {headers: {'Content-Type': 'application/json'}};
 
 function Constructor(movie) {
         const {
@@ -31,7 +32,7 @@ function Constructor(movie) {
     //     .then(console.log);
 
     const addMovies = (movieInfo) =>
-        fetch(`${moviesURL}`, {method: "POST",  headers: {'Content-Type': 'application/json'}, body: `${JSON.stringify(movieInfo)}`})
+        fetch(`${moviesURL}`, {method: "POST",  header, body: `${JSON.stringify(movieInfo)}`})
             .then(res => res.json())
             .catch(console.error)
 
@@ -56,14 +57,21 @@ function Constructor(movie) {
     }
 
     function deleteIds (id) {
-           return fetch(`${moviesURL}/${id}`, {"method": "delete"})
+           return fetch(`${moviesURL}/${id}`, {"method": "delete", header})
                 .then(res => res.json())
                .catch(console.error)
         }
 
     const editMovie = (movieObj, id) => {
-               return fetch(`${moviesURL}/${id}`, {method: "PATCH", headers: {'Content-Type': 'application/json'},
+               return fetch(`${moviesURL}/${id}`, {method: "PATCH", header,
                    body: `${JSON.stringify(movieObj)}`})
                     .then(res => res.json())
                     .catch(console.error)
     }
+
+    function appendInfo (id) {
+        return fetch(`${moviesURL}/${id}`, {"method": "GET", header})
+            .then(res => res.json())
+            .catch(console.error)
+    }
+
