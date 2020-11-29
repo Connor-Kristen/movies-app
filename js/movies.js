@@ -22,7 +22,7 @@ $(document).ready(function () {
 
     const buildHtml = ({title, poster, id}) => `
              <dl class="movieInfo">
-                <div class="img">
+                <div class="img" data-id=${id}>
                     <img src=${poster} class="movie-poster">
                 </div>
                 <dt class="movie-title">${title}</dt>
@@ -152,26 +152,32 @@ $(document).ready(function () {
     })
 
     $('#edit').on('click', () => {
-        $('.edit-movie-modal').fadeIn();
+        editModal.fadeIn();
 
     })
+
     $(document).click((e) => {
         if ($(e.target).closest('.edit-movie-modal, #edit').length === 0) {
-            $('.edit-movie-modal').fadeOut();
+            editModal.fadeOut();
         }
     })
 
+    $('.side-bar').css("width", 0)
+    $('.movie-functions').css('font-size', 0)
     $('.hamburger').on("click", function() {
-        $('.side-bar').animate({width: "toggle"}, 300)
+        $('.side-bar').animate({width: "150px"}, 300);
+        $('.movie-functions').animate({'font-size': '1em'}, 300)
     })
-
-    $('.side-bar').hide();
 
     $(document).click((e) => {
         if ($(e.target).closest('.side-bar, .hamburger').length === 0) {
-            $('.side-bar').animate({"width": 0}, 300)
-
+            $('.side-bar').animate({"width": 0}, 300);
+            $('.movie-functions').animate({'font-size': 0}, 300);
         }
+    })
+
+    $('body').on('click', '.img', function () {
+
     })
 
 
