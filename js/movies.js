@@ -66,8 +66,6 @@ $(document).ready(function () {
         <input class="movie-inputs" id=${obj.title} value="${obj.title}\" type="text">
         <label for=${obj.year}>Edit Year</label>
         <input class="movie-inputs" id=${obj.year} value=${obj.year} type="number">
-        <label for=${obj.imdbRating}>Edit IMDB Rating</label>
-        <input class="movie-inputs" id=${obj.imdbRating} value=${obj.imdbRating} type="text">
         <label for=${obj.poster}>Edit Poster URL</label>
         <input class="movie-inputs" id=${obj.poster} value="${obj.poster}\" type="text">
         <label for=${obj.genre}>Edit Genre</label>
@@ -81,12 +79,21 @@ $(document).ready(function () {
         <button id="edit-movie">Edit Movie</button>
     </form>`
 
+
+    const setRatings = (ratingArr) => {
+        let html = ""
+        ratingArr.forEach((rating) => {
+            html += `<label for=${rating.Source}>${rating.Source}:</label>
+                <input class="movie-inputs" id=${rating.Source}\ value="${rating.Value}" type="text">`
+        });
+        return html;
+    }
+
     addMovie.on("click", () =>  {
         const title = $('#add-title').val();
         const year = $('#add-year').val();
         // figure out rating later
         getMovieInfo(title, year)
-            // .then(console.log)
             .then(data => addMovies(data)
                 .then(data => {
                     movieSelect.append(buildHtml(data));
@@ -112,6 +119,8 @@ $(document).ready(function () {
                 for (const movies of data) {
                     if ($(e.target).data("attribute") === movies.id) {
                         editModal.html(editInfo(movies))
+                        editModal.append(setRatings(movies.criticRatings))
+                        console.log(movies);
                     }
                     submitEdit(data, $(e.target).data("attribute"))
                 }
@@ -128,16 +137,19 @@ $(document).ready(function () {
             editMovie({
                 title: movieInfoArray[0],
                 year: movieInfoArray[1],
-                imdbRating: movieInfoArray[2],
-                poster: movieInfoArray[3],
-                genre: movieInfoArray[4],
-                director: movieInfoArray[5],
-                plot: movieInfoArray[6],
-                actors: movieInfoArray[7],
+                poster: movieInfoArray[2],
+                genre: movieInfoArray[3],
+                director: movieInfoArray[4],
+                plot: movieInfoArray[5],
+                actors: movieInfoArray[6],
+                criticRatings: [{Source: "Internet Movie Database", Value: movieInfoArray[7]},
+                                        {Source: "Rotten Tomatoes", Value: movieInfoArray[8]},
+                                        {Source: "Metacritic", Value: movieInfoArray[9]}],
                 id: id,
             }, id).then(() => {
                 moviesObjArr().then(console.log);
             })
+            console.log(movieInfoArray);
         })
     }
 

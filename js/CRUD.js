@@ -9,7 +9,7 @@ function Constructor(movie) {
         const {
             title,
             year,
-            imdbRating,
+            criticRatings,
             userRating,
             poster,
             genre,
@@ -42,7 +42,7 @@ function Constructor(movie) {
                 return new Constructor({
                     title: data.Title,
                     year: data.Year,
-                    imdbRating: data.Ratings[0].Value,
+                    criticRatings: data.Ratings,
                     userRating: rating,
                     poster: data.Poster,
                     genre: data.Genre,
