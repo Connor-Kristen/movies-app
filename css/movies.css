@@ -55,11 +55,39 @@ a:first-child i {
     font-size: 1.3em;
 }
 
-.massive-search {
+#massive-search {
     position: absolute;
+    top: 0;
     width: 100vw;
     height: 100vh;
+    right: 100vw;
 
+}
+
+.slideToTheLeft {
+    animation: slide 3s forwards;
+}
+
+.slideToTheRight {
+    animation: slide 3s backwards;
+}
+
+@keyframes slide {
+    from {
+        transform: translate(-100vw);
+    }
+    to {
+       transform: translate(100vw);
+    }
+}
+
+
+
+#massive-search input {
+    width: 100vw;
+    height: 200px;
+    font-size: 4em;
+    opacity: 0;
 }
 
 .main-container {
