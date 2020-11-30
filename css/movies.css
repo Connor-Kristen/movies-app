@@ -38,8 +38,8 @@ body, html {
 }
 
 .bars {
-    padding: 3px;
-    width: 50px;
+    padding: 2px;
+    width: 40px;
     background-color: #bbbbbb;
     align-self: center;
     border-radius: 25px;
@@ -47,10 +47,20 @@ body, html {
 
 i {
     color: white;
-    font-size: 3em;
+    font-size: 2em;
     margin-right: 10px;
 }
 
+a:first-child i {
+    font-size: 1.3em;
+}
+
+.massive-search {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+
+}
 
 .main-container {
     display: grid;
@@ -70,7 +80,12 @@ i {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    min-height: 48px !important;
+    min-height: 48px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
 }
 
 .main-wrapper {

@@ -95,7 +95,7 @@ $(document).ready(function () {
             .then(data => addMovie.on("click", () =>  {
                         addMovies(data)
                         .then(data => {
-                            movieSelect.append(buildHtml(data));
+                            movieSelect.prepend(buildHtml(data));
                             editModal.append(buildEditTitles(data.title, data.id))
                             moviesObjArr().then(console.log);
                         })
