@@ -259,5 +259,16 @@ $(document).ready(function () {
             $(this).css('color', '#bbb')
         });
 
+    $('.fa-search').on("click", function() {
+        // $('#massive-search, #search-bar').animate({width: "100vw"}, 300);
+        // $('#massive-search').show()
+        $('#search-bar').css("opacity", 1);
+        $('#massive-search').css("background", "rgba(0,0,0,.7");
+        $('div:not(#massive-search)').css("filter", "blur(3px)");
+        if (!$('#massive-search').hasClass('slideToTheLeft')) {
+            $('#massive-search').addClass('slideToTheLeft')
+        }
+    })
+
 
 });
