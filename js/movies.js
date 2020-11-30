@@ -197,12 +197,16 @@ $(document).ready(function () {
             <div id="year-info">Year: ${year}</div>
             <div id="plot-info">Plot: ${plot}</div>
             <div id="actors-info">Actors: ${actors}</div>
-            <div id="directors-info">Directors: ${director}</div>
-        `
+            <div id="directors-info">Directors: ${director}</div>`
 
-        criticRatings.forEach(function(rating) {
-            html += `<div id='ratings-info'>${rating.Source} -> ${rating.Value}</div>
-        `
+        criticRatings.forEach(function(rating, i) {
+            if (i === 0) {
+                html += "<div>"
+            }
+            html += `<div id='ratings-info'>${rating.Source} -> ${rating.Value}</div>`
+            if (criticRatings.length - 1 === i) {
+                html += "</div>"
+            }
         })
         // console.log(movie);
         return html;
@@ -212,7 +216,7 @@ $(document).ready(function () {
         appendInfo($(this).data('id'))
             .then(data => {
                 $('.info-box').html(buildHtmlInfoBox(data))
-                console.log(data);
+                $('.video-player').html(`<img src=${data.poster}>`)
             })
 
     })
