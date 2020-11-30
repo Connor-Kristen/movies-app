@@ -38,8 +38,8 @@ body, html {
 }
 
 .bars {
-    padding: 3px;
-    width: 50px;
+    padding: 2px;
+    width: 40px;
     background-color: #bbbbbb;
     align-self: center;
     border-radius: 25px;
@@ -47,10 +47,20 @@ body, html {
 
 i {
     color: white;
-    font-size: 3em;
+    font-size: 2em;
     margin-right: 10px;
 }
 
+a:first-child i {
+    font-size: 1.3em;
+}
+
+.massive-search {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+
+}
 
 .main-container {
     display: grid;
@@ -70,7 +80,12 @@ i {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    min-height: 48px !important;
+    min-height: 48px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
 }
 
 .main-wrapper {
@@ -110,12 +125,6 @@ i {
     padding: 5px;
 }
 
-@keyframes sidebarTransition {
-    from {width: 0}
-    to {width: 150px}
-}
-
-
 .movie-container {
     grid-area: 1 / 4 / auto / span 6;
     display: flex;
@@ -127,15 +136,14 @@ i {
 .info-box {
     height: 250px;
     width: 150%;
-    position: relative;
-    right: 25%;
     display: grid;
     gap: 10px 0;
     grid-template: repeat(6, 1fr)/1fr;
     overflow-y: auto;
-    align-self: baseline;
+    /*align-self: baseline;*/
     text-align: center;
     color: white;
+    max-width: 539px;
 }
 
 .modal {
@@ -164,7 +172,13 @@ i {
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 16px;
-    display: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.edit-movie {
+
 }
 
 input::-webkit-outer-spin-button,
@@ -189,7 +203,9 @@ input::-webkit-inner-spin-button {
 }
 
 .close {
-    float: right;
+    align-self: flex-end;
+    margin-right: 15px;
+    margin-top: 10px;
 }
 
 .movie-functions {
@@ -202,11 +218,15 @@ input::-webkit-inner-spin-button {
 }
 
 .movie-select {
-    grid-area: 5 / 1 / span 10 / span 12;
-    /*margin-top: 50px;*/
+    grid-area: 3 / 1 / span 14 / span 12;
     text-align: center;
     display: flex;
     overflow-x: auto;
+    overflow-y: visible;
+}
+
+.movie-select::-webkit-scrollbar {
+    display: none;
 }
 
 dl {
@@ -235,9 +255,10 @@ dl {
 }
 
 @media screen and (min-width: 596px) {
-    .movie-select {
-        grid-area: 5 / 1 / span 12 / span 12;
-    }
+    /*.info-box {*/
+    /*    align-self: flex-start;*/
+    /*}*/
+
     .info-box {
         grid-template: 1fr 1fr 1fr/ 1fr 1fr;
 
@@ -247,7 +268,7 @@ dl {
 @media screen and (min-width: 768px) {
     .info-box {
         /*grid-area: 5 / 8 / span 4 / span 4;*/
-        height: 200px;
+        /*height: 200px;*/
     }
     /*.movie-container {*/
     /*    grid-area: 3 / 2 / span 8 / span 8;*/

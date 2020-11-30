@@ -9,12 +9,11 @@ $(document).ready(function () {
     const movieSelect = $(".movie-select");
     const editModal = $('.edit-movie-modal');
 
-    movieSelect.hide()
+    $('.banner-add, .main-container, .nav').hide()
 
     moviesObjArr().then(function () {
         $('.loading-screen').hide();
-        $(".main-container").show();
-        movieSelect.show();
+        $('.banner-add, .main-container, .nav').show()
     });
 
     moviesObjArr().then(console.log);
@@ -76,7 +75,6 @@ $(document).ready(function () {
             <textarea class="movie-inputs" id=${obj.plot}>${obj.plot}</textarea>
             <label for=${obj.actors}>Edit Actors</label>
             <input class="movie-inputs" id=${obj.actors} value="${obj.actors}\" type="text">
-            <button id="edit-movie">Edit Movie</button>
         </form>`
 
 
@@ -86,6 +84,7 @@ $(document).ready(function () {
             html += `<label for=${rating.Source}>${rating.Source}:</label>
                 <input class="movie-inputs" id=${rating.Source}\ value="${rating.Value}" type="text">`
         });
+        html += '<button id="edit-movie">Edit Movie</button>'
         return html;
     }
 
@@ -96,11 +95,13 @@ $(document).ready(function () {
             .then(data => addMovie.on("click", () =>  {
                         addMovies(data)
                         .then(data => {
-                            movieSelect.append(buildHtml(data));
+                            movieSelect.prepend(buildHtml(data));
+                            editModal.append(buildEditTitles(data.title, data.id))
                             moviesObjArr().then(console.log);
                         })
                         .catch(console.error)
             }))
+            .catch(console.error)
     })
 
     movieSelect.on('click', '.delete-btn', (e) => {
@@ -122,12 +123,13 @@ $(document).ready(function () {
                         editModal.append(setRatings(movies.criticRatings))
                         console.log(movies);
                     }
-                    submitEdit(data, $(e.target).data("attribute"))
                 }
+                submitEdit($(e.target).data("attribute"))
+                userRatingEdit($(e.target).data("attribute"))
             })
     });
 
-    const submitEdit = (dataObj, id) => {
+    const submitEdit = (id) => {
         $('#edit-movie').on("click", (e) => {
             e.preventDefault();
             const change = $('.movie-inputs');
@@ -145,7 +147,6 @@ $(document).ready(function () {
                 criticRatings: [{Source: "Internet Movie Database", Value: movieInfoArray[7]},
                                         {Source: "Rotten Tomatoes", Value: movieInfoArray[8]},
                                         {Source: "Metacritic", Value: movieInfoArray[9]}],
-                id: id,
             }, id).then(() => {
                 moviesObjArr().then(console.log);
             })
@@ -153,7 +154,20 @@ $(document).ready(function () {
         })
     }
 
+    const userRatingEdit = (id) => {
+        $('.star').on('click', function () {
+            let rating = $(this).data('rated')
+            $('#edit-movie').on("click", (e) => {
+                e.preventDefault();
+                editMovie({userRating: rating}, id)
+                    .then(console.log)
+            })
+        })
+    }
+
+
     $('.modal').hide();
+    $('.edit-movie-modal').hide();
 
     $('#add').on('click', () => {
         $('.modal').fadeIn();
@@ -216,7 +230,7 @@ $(document).ready(function () {
         appendInfo($(this).data('id'))
             .then(data => {
                 $('.info-box').html(buildHtmlInfoBox(data))
-                $('.video-player').html(`<img src=${data.poster}>`)
+                $('.video-box').html(`<img src=${data.poster} class="video-player">`)
             })
 
     })
@@ -237,5 +251,13 @@ $(document).ready(function () {
         $('.side-bar').animate({"width": 0}, 300);
         $('.movie-functions').animate({'font-size': 0}, 300);
     })
+
+    $(document).on('mouseover', '.star',function () {
+        $(this).css('color', 'yellow')
+    })
+        .on('mouseout', '.star',function () {
+            $(this).css('color', '#bbb')
+        });
+
 
 });
