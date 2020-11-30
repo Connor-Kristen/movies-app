@@ -22,7 +22,7 @@ $(document).ready(function () {
     const buildHtml = ({title, poster, id}) => `
              <dl class="movieInfo">
                 <div class="img" data-id=${id}>
-                    <img src=${poster} class="movie-poster">
+                    <img src=${poster} class="movie-poster" alt="poster for ${title}\">
                 </div>
                 <dt class="movie-title">${title}</dt>
                  <button class="delete-btn" data-id=${id}>delete</button>
@@ -34,13 +34,16 @@ $(document).ready(function () {
     const renderEditTitles = () => {
         moviesObjArr()
             .then(data => {
-                for (const movies of data) {
-                    editModal.append(buildEditTitles(movies.title, movies.id))
+                let html = ""
+                for (const [i,movies] of data.entries()) {
+                    if (i === 0) {
+                        html += '<div class="initial-pick">What Movie Would You Like To Edit</div>'
+                    }
+                    html += buildEditTitles(movies.title, movies.id)
                 }
+                editModal.html(html);
             })
     }
-    renderEditTitles();
-
 
     const setHtml = () => {
         moviesObjArr().then(data => {
@@ -89,7 +92,7 @@ $(document).ready(function () {
     }
 
     $('.star').on('click', function () {
-        const title = $('#add-title').val();
+        const title = $('#add-title').val().toLowerCase();
         const year = $('#add-year').val();
         getMovieInfo(title, year, $(this).data('rated'))
             .then(data => addMovie.on("click", () =>  {
@@ -100,6 +103,8 @@ $(document).ready(function () {
                             moviesObjArr().then(console.log);
                         })
                         .catch(console.error)
+                $('.modal').fadeOut();
+                $('#add-title, #add-year').val("");
             }))
             .catch(console.error)
     })
@@ -108,7 +113,7 @@ $(document).ready(function () {
         e.preventDefault();
        deleteIds($(e.target).data('id'))
            .then(() => {
-               console.log($(e.target).parent().css('display', 'none'));
+               $(e.target).parent().css('display', 'none')
                moviesObjArr().then(console.log);
            })
     })
@@ -134,7 +139,7 @@ $(document).ready(function () {
             e.preventDefault();
             const change = $('.movie-inputs');
             let movieInfoArray = Array.from(change.map(function () {
-                return $(this).val();
+                return $(this).val()
             }))
             editMovie({
                 title: movieInfoArray[0],
@@ -151,6 +156,7 @@ $(document).ready(function () {
                 moviesObjArr().then(console.log);
             })
             console.log(movieInfoArray);
+            $('.edit-movie-modal').fadeOut()
         })
     }
 
@@ -181,7 +187,7 @@ $(document).ready(function () {
 
     $('#edit').on('click', () => {
         editModal.fadeIn();
-
+        renderEditTitles();
     })
 
     $(document).click((e) => {
@@ -230,7 +236,7 @@ $(document).ready(function () {
         appendInfo($(this).data('id'))
             .then(data => {
                 $('.info-box').html(buildHtmlInfoBox(data))
-                $('.video-box').html(`<img src=${data.poster} class="video-player">`)
+                $('.video-box').html(`<img src=${data.poster} class="video-player" alt="poster for ${data.title}">`)
             })
 
     })
@@ -267,8 +273,17 @@ $(document).ready(function () {
         $('div:not(#massive-search)').css("filter", "blur(3px)");
         if (!$('#massive-search').hasClass('slideToTheLeft')) {
             $('#massive-search').addClass('slideToTheLeft')
+            $('#massive-search').removeClass('slideToTheRight')
         }
     })
 
+    $('#search-bar').on('input', function () {
+        if ($(this).val().toLowerCase() === 'help me') {
+            $('#massive-search').removeClass('slideToTheLeft')
+            $('#massive-search').addClass('slideToTheRight')
+            $('div:not(#massive-search)').css("filter", "none");
+            $('#search-bar').val("");
+        }
+    })
 
 });
