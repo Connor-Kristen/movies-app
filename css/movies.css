@@ -87,13 +87,13 @@ a:first-child i {
         transform: translate(200%);
     }
     to {
-       transform: translate(100.8%);
+       transform: translate(100.5%);
     }
 }
 
 @keyframes slideRight {
     from {
-        transform: translate(100%);
+        transform: translate(100.5%);
     }
     to {
         transform: translate(0);

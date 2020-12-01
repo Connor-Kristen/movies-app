@@ -1,6 +1,6 @@
 // for setting HTML
 "use strict";
-$('.banner-add, .nav, #massive-search').hide()
+$('.banner-add, .nav').hide()
 $(document).ready(function () {
     //make sure canvas clear interval does not keep going
 clearInterval(canvInt)
