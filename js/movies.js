@@ -1,23 +1,23 @@
 // for setting HTML
 "use strict";
+//hide everything not dynamically added
 $('.banner-add, .nav').hide()
 $(document).ready(function () {
     //make sure canvas clear interval does not keep going
 clearInterval(canvInt)
-
     //selectors for html containers
     const addMovie = $('#add-movie');
     const movieSelect = $(".movie-select");
     const editModal = $('.edit-movie-modal');
-
     //hide modals by default
     $('.modal').hide();
     $('.edit-movie-modal').hide();
+    //hide loading and show everything else once the
     moviesObjArr().then(function () {
         $('.loading-screen').hide();
         $('.banner-add, .nav').show()
     });
-
+    //build html  for the movie selection cards
     const buildHtml = ({title, poster, id}) => `
              <dl class="movieInfo">
                 <div class="img" data-id=${id}>
@@ -26,10 +26,10 @@ clearInterval(canvInt)
                 <dt class="movie-title">${title}</dt>
                  <button class="delete-btn" data-id=${id}>delete</button>
              </dl>`
-
+    //build the selection of titles to edit on editing modal
     const buildEditTitles = (title, id) =>
         `<div class="initial-pick" data-attribute=${id}>${title}</div>`
-
+    //render the title options
     const renderEditTitles = () => {
         moviesObjArr()
             .then(data => {
@@ -43,7 +43,7 @@ clearInterval(canvInt)
                 editModal.html(html);
             })
     }
-
+    //render the cards of movies to select from to
     const setHtml = () => {
         moviesObjArr().then(data => {
             for (const movies of data) {
@@ -52,6 +52,7 @@ clearInterval(canvInt)
         })
     }
     setHtml();
+    //build the html to edit the title selected with fields already filled out
     const editInfo = (obj) =>
         `<form class="edit-movie-form">
             <div id="edit">
@@ -77,8 +78,7 @@ clearInterval(canvInt)
             <label for=${obj.actors}>Edit Actors</label>
             <input class="movie-inputs" id=${obj.actors} value="${obj.actors}\" type="text">
         </form>`
-
-
+//append the array of critic ratings to what is set in function above
     const setRatings = (ratingArr) => {
         let html = ""
         ratingArr.forEach((rating) => {
@@ -88,11 +88,13 @@ clearInterval(canvInt)
         html += '<button id="edit-movie">Edit Movie</button>'
         return html;
     }
-
+    //must click on user rating before clicking to add the movie
     $('.star').on('click', function () {
         const title = $('#add-title').val().toLowerCase();
         const year = $('#add-year').val();
+        //pass in title and year to get the movie info
         getMovieInfo(title, year, $(this).data('rated'))
+            //on  click, append the movie before and append the new edit option
             .then(data => addMovie.on("click", () =>  {
                         addMovies(data)
                         .then(data => {
@@ -106,7 +108,7 @@ clearInterval(canvInt)
             }))
             .catch(console.error)
     })
-
+    //delete movie when delete btn pressed
     movieSelect.on('click', '.delete-btn', (e) => {
         e.preventDefault();
        deleteIds($(e.target).data('id'))
@@ -115,7 +117,7 @@ clearInterval(canvInt)
                moviesObjArr().then(console.log);
            })
     })
-
+    //when a movie to edit has been clicked, remove options and populate the movie info
     editModal.on("click", ".initial-pick", (e) => {
         $('.initial-pick').hide();
         moviesObjArr()
@@ -131,7 +133,7 @@ clearInterval(canvInt)
                 userRatingEdit($(e.target).data("attribute"))
             })
     });
-
+//submit the final edit to change movie
     const submitEdit = (id) => {
         $('#edit-movie').on("click", (e) => {
             e.preventDefault();
@@ -157,7 +159,7 @@ clearInterval(canvInt)
             $('.edit-movie-modal').fadeOut()
         })
     }
-
+//submit edit to change user rating
     const userRatingEdit = (id) => {
         $('.star').on('click', function () {
             let rating = $(this).data('rated')
@@ -170,37 +172,39 @@ clearInterval(canvInt)
     }
 
 
-
+//fade modal in
     $('#add').on('click', () => {
         $('.modal').fadeIn();
 
     })
+    //fade modal out on click other than modal or modal link
     $(document).click((e) => {
         if ($(e.target).closest('.modal, #add').length === 0) {
             $('.modal').fadeOut();
         }
     })
-
+//fade in edit modal with the titles to edit
     $('#edit').on('click', () => {
         editModal.fadeIn();
         renderEditTitles();
     })
-
+//fade out edit modal when anything other than modal is pressed
     $(document).click((e) => {
         if ($(e.target).closest('.edit-movie-modal, #edit').length === 0) {
             editModal.fadeOut();
         }
     })
-
+//set initial css values for sidebar
     $('#color').css('opacity', 0);
     $('.side-bar').css({width: 0})
     $('.movie-functions').css('font-size', 0)
+    //slide sidebar in when hamburger clicked
     $('.hamburger').on("click", function() {
         $('.side-bar').animate({width: "150px"}, 300);
         $('#color').animate({'opacity': 1}, 300);
         $('.movie-functions').animate({'font-size': '1em'}, 300)
     })
-
+//fade out when anything other than sidebar is clicked
     $(document).click((e) => {
         if ($(e.target).closest('.side-bar, .hamburger').length === 0) {
             $('.side-bar').animate({"width": 0}, 300);
@@ -208,7 +212,7 @@ clearInterval(canvInt)
             $('#color').animate({'opacity': 0}, 300);
         }
     })
-
+//build html with info of movie populated
     function buildHtmlInfoBox (movie) {
         const {title, year, plot, actors, director, criticRatings} = movie;
         let html = `
@@ -217,7 +221,6 @@ clearInterval(canvInt)
             <div id="plot-info">Plot: ${plot}</div>
             <div id="actors-info">Actors: ${actors}</div>
             <div id="directors-info">Directors: ${director}</div>`
-
         criticRatings.forEach(function(rating, i) {
             if (i === 0) {
                 html += "<div>"
@@ -229,7 +232,7 @@ clearInterval(canvInt)
         })
         return html;
     }
-
+// when poster is clicked, render the info for that movie and the poster
     $('body').on('click', '.img', function () {
         appendInfo($(this).data('id'))
             .then(data => {
@@ -238,7 +241,7 @@ clearInterval(canvInt)
             })
 
     })
-
+//custom sticky nav
     $(window).scroll(function () {
     const currentPos = $(this).scrollTop();
     if (currentPos >=parseFloat($('.banner-add').css('height'))) {
@@ -249,20 +252,20 @@ clearInterval(canvInt)
         $('.side-bar').offset({top: 50});
     }
 })
-
+//close sidebar when X is clicked
     $('#close-side').on("click", function () {
         $('#color').animate({'opacity': 0}, 300);
         $('.side-bar').animate({"width": 0}, 300);
         $('.movie-functions').animate({'font-size': 0}, 300);
     })
-
+//hover effect for user rating stars
     $(document).on('mouseover', '.star',function () {
         $(this).css('color', 'yellow')
     })
         .on('mouseout', '.star',function () {
             $(this).css('color', '#edf2f4')
         });
-
+//ridiculous search bar slide in
     $('.fa-search').on("click", function() {
         $('#search-bar').css("opacity", 1);
         $('#massive-search').css("background", "rgba(0,0,0,.7");
@@ -272,7 +275,7 @@ clearInterval(canvInt)
             $('#massive-search').removeClass('slideToTheRight')
         }
     })
-
+//ridiculous search bar slide in
     $('#search-bar').on('input', function () {
         if ($(this).val().toLowerCase() === 'help me') {
             $('#massive-search').removeClass('slideToTheLeft')
