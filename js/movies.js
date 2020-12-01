@@ -4,7 +4,7 @@
 $('.banner-add, .nav').hide()
 $(document).ready(function () {
     //make sure canvas clear interval does not keep going
-clearInterval(canvInt)
+    clearInterval(canvInt)
     //selectors for html containers
     const addMovie = $('#add-movie');
     const movieSelect = $(".movie-select");
@@ -17,13 +17,13 @@ clearInterval(canvInt)
         $('.loading-screen').hide();
         $('.banner-add, .nav').show()
     });
-    //build html  for the movie selection cards
+    //build html for the movie selection cards
     const buildHtml = ({title, poster, id}) => `
              <dl class="movieInfo">
                 <div class="img" data-id=${id}>
                     <img src=${poster} class="movie-poster" alt="poster for ${title}\">
                 </div>
-                <dt class="movie-title">${title}</dt>
+                <dt class="movie-title wide">${title}</dt>
                  <button class="delete-btn" data-id=${id}>delete</button>
              </dl>`
     //build the selection of titles to edit on editing modal
@@ -34,7 +34,7 @@ clearInterval(canvInt)
         moviesObjArr()
             .then(data => {
                 let html = ""
-                for (const [i,movies] of data.entries()) {
+                for (const [i, movies] of data.entries()) {
                     if (i === 0) {
                         html += '<div class="initial-pick">What Movie Would You Like To Edit</div>'
                     }
@@ -95,14 +95,14 @@ clearInterval(canvInt)
         //pass in title and year to get the movie info
         getMovieInfo(title, year, $(this).data('rated'))
             //on  click, append the movie before and append the new edit option
-            .then(data => addMovie.on("click", () =>  {
-                        addMovies(data)
-                        .then(data => {
-                            movieSelect.prepend(buildHtml(data));
-                            editModal.append(buildEditTitles(data.title, data.id))
-                            moviesObjArr().then(console.log);
-                        })
-                        .catch(console.error)
+            .then(data => addMovie.on("click", () => {
+                addMovies(data)
+                    .then(data => {
+                        movieSelect.prepend(buildHtml(data));
+                        editModal.append(buildEditTitles(data.title, data.id))
+                        moviesObjArr().then(console.log);
+                    })
+                    .catch(console.error)
                 $('.modal').fadeOut();
                 $('#add-title, #add-year').val("");
             }))
@@ -111,11 +111,11 @@ clearInterval(canvInt)
     //delete movie when delete btn pressed
     movieSelect.on('click', '.delete-btn', (e) => {
         e.preventDefault();
-       deleteIds($(e.target).data('id'))
-           .then(() => {
-               $(e.target).parent().css('display', 'none')
-               moviesObjArr().then(console.log);
-           })
+        deleteIds($(e.target).data('id'))
+            .then(() => {
+                $(e.target).parent().css('display', 'none')
+                moviesObjArr().then(console.log);
+            })
     })
     //when a movie to edit has been clicked, remove options and populate the movie info
     editModal.on("click", ".initial-pick", (e) => {
@@ -150,8 +150,8 @@ clearInterval(canvInt)
                 plot: movieInfoArray[5],
                 actors: movieInfoArray[6],
                 criticRatings: [{Source: "Internet Movie Database", Value: movieInfoArray[7]},
-                                        {Source: "Rotten Tomatoes", Value: movieInfoArray[8]},
-                                        {Source: "Metacritic", Value: movieInfoArray[9]}],
+                    {Source: "Rotten Tomatoes", Value: movieInfoArray[8]},
+                    {Source: "Metacritic", Value: movieInfoArray[9]}],
             }, id).then(() => {
                 moviesObjArr().then(console.log);
             })
@@ -199,7 +199,7 @@ clearInterval(canvInt)
     $('.side-bar').css({width: 0})
     $('.movie-functions').css('font-size', 0)
     //slide sidebar in when hamburger clicked
-    $('.hamburger').on("click", function() {
+    $('.hamburger').on("click", function () {
         $('.side-bar').animate({width: "150px"}, 300);
         $('#color').animate({'opacity': 1}, 300);
         $('.movie-functions').animate({'font-size': '1em'}, 300)
@@ -212,8 +212,9 @@ clearInterval(canvInt)
             $('#color').animate({'opacity': 0}, 300);
         }
     })
+
 //build html with info of movie populated
-    function buildHtmlInfoBox (movie) {
+    function buildHtmlInfoBox(movie) {
         const {title, year, plot, actors, director, criticRatings} = movie;
         let html = `
             <div id="title-info">Title: ${title}</div>
@@ -221,7 +222,7 @@ clearInterval(canvInt)
             <div id="plot-info">Plot: ${plot}</div>
             <div id="actors-info">Actors: ${actors}</div>
             <div id="directors-info">Directors: ${director}</div>`
-        criticRatings.forEach(function(rating, i) {
+        criticRatings.forEach(function (rating, i) {
             if (i === 0) {
                 html += "<div>"
             }
@@ -232,6 +233,7 @@ clearInterval(canvInt)
         })
         return html;
     }
+
 // when poster is clicked, render the info for that movie and the poster
     $('body').on('click', '.img', function () {
         appendInfo($(this).data('id'))
@@ -243,15 +245,15 @@ clearInterval(canvInt)
     })
 //custom sticky nav
     $(window).scroll(function () {
-    const currentPos = $(this).scrollTop();
-    if (currentPos >=parseFloat($('.banner-add').css('height'))) {
-          $('.nav').css({position: 'fixed', 'background-color': 'rgba(0,0,0,.5)'});
-        $('.side-bar').css({top: 0});
-    } else {
-        $('.nav').css({position: 'static', 'background-color': 'transparent'});
-        $('.side-bar').offset({top: 50});
-    }
-})
+        const currentPos = $(this).scrollTop();
+        if (currentPos >= parseFloat($('.banner-add').css('height'))) {
+            $('.nav').css({position: 'fixed', 'background-color': 'rgba(0,0,0,.5)'});
+            $('.side-bar').css({top: 0});
+        } else {
+            $('.nav').css({position: 'static', 'background-color': 'transparent'});
+            $('.side-bar').offset({top: 50});
+        }
+    })
 //close sidebar when X is clicked
     $('#close-side').on("click", function () {
         $('#color').animate({'opacity': 0}, 300);
@@ -259,14 +261,14 @@ clearInterval(canvInt)
         $('.movie-functions').animate({'font-size': 0}, 300);
     })
 //hover effect for user rating stars
-    $(document).on('mouseover', '.star',function () {
+    $(document).on('mouseover', '.star', function () {
         $(this).css('color', 'yellow')
     })
-        .on('mouseout', '.star',function () {
+        .on('mouseout', '.star', function () {
             $(this).css('color', '#edf2f4')
         });
 //ridiculous search bar slide in
-    $('.fa-search').on("click", function() {
+    $('.fa-search').on("click", function () {
         $('#search-bar').css("opacity", 1);
         $('#massive-search').css("background", "rgba(0,0,0,.7");
         $('div:not(#massive-search)').css("filter", "blur(3px)");
