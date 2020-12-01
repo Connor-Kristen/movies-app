@@ -15,7 +15,7 @@
 </head>
 <body>
 
-<div class="loading-screen">Loading...</div>
+<canvas class="loading-screen"></canvas>
 <div class="banner-add">This is an add for cows give us mooney</div>
 <nav class="nav">
 	<div class="main-wrapper nav">
@@ -26,17 +26,6 @@
 		</div>
 	<div class="logo">NOTFLIX</div>
 		<div class="header">
-			<label for="color">Colorblind Options</label>
-			<select name="colorblind-opt" id="color">
-				<option>Protanopia</option>
-				<option>Deuteranopia</option>
-				<option>Tritanopia</option>
-				<option>Achromatopsia</option>
-				<option>Protanomaly</option>
-				<option>Deuteranomaly</option>
-				<option>Tritanomaly</option>
-				<option>Achromatomaly</option>
-			</select>
 			<a href="#" id="search">
 				<i class="fas fa-search"></i>
 			</a>
@@ -48,20 +37,27 @@
 </nav>
 <div class="main-container">
 
-
-
 	<div class="side-bar">
 		<div class="movie-functions" id="close-side">X</div>
 		<div class="movie-functions" id="add">ADD MOVIE</div>
 		<div class="movie-functions" id="edit">EDIT MOVIE</div>
+		<label for="color" class="movie-functions">Colorblind Options</label>
+		<select name="colorblind-opt" id="color" class="movie-functions">
+			<option>Protanopia</option>
+			<option>Deuteranopia</option>
+			<option>Tritanopia</option>
+			<option>Achromatopsia</option>
+			<option>Protanomaly</option>
+			<option>Deuteranomaly</option>
+			<option>Tritanomaly</option>
+			<option>Achromatomaly</option>
+		</select>
 	</div>
 
 	<div class="movie-container">
 		<span class="video-box"></span>
 		<span class="info-box"></span>
 	</div>
-
-
 
 	<div class="modal">
 		<div class="modal-title">ADD A MOVIE</div>
@@ -88,31 +84,24 @@
 		<div class="close">X</div>
 	</div>
 
-<!--	<br>-->
-
 	<div class="movie-select"></div>
 
 	<div class="footer"></div>
 
-
 </div>
-
 	<div id="massive-search">
 		<input type="text" id="search-bar" placeholder="SEARCH">
 	</div>
-
-
-
-
-
-
 
 <script src="https://kit.fontawesome.com/6e57a86385.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"
 		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src="js/keys.js"></script>
+<script src="server.js"></script>
+<script src="js/loading-canvas.js"></script>
 <script src="js/CRUD.js"></script>
 <script src="js/movies.js"></script>
+
 
 </body>
 </html>
