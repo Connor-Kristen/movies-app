@@ -250,6 +250,10 @@ input::-webkit-inner-spin-button {
     width: auto;
 }
 
+.movie-poster:hover {
+    opacity: .6;
+    background: white;
+}
 
 .star {
     color: #edf2f4;
