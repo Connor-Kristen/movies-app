@@ -1,4 +1,4 @@
-/* test */
+
 * {
     box-sizing: border-box;
 }
@@ -9,7 +9,11 @@ body, html {
     margin: 0;
     padding: 0;
     background: #2b2d42;
+}
 
+.loading-screen {
+    width: 100vw;
+    height: 100vh;
 }
 
 .logo {
@@ -46,7 +50,7 @@ body, html {
 .bars {
     padding: 2px;
     width: 40px;
-    background-color: #8d99ae;
+    background-color: #edf2f4;
     align-self: center;
     border-radius: 25px;
 }
@@ -80,16 +84,16 @@ a:first-child i {
 
 @keyframes slideLeft {
     from {
-        transform: translate(0);
+        transform: translate(200%);
     }
     to {
-       transform: translate(100%);
+       transform: translate(100.5%);
     }
 }
 
 @keyframes slideRight {
     from {
-        transform: translate(100%);
+        transform: translate(100.5%);
     }
     to {
         transform: translate(0);
@@ -111,7 +115,6 @@ a:first-child i {
     gap: 20px 0;
     width: 100%;
     height: 200%;
-    /*max-width: 1400px;*/
     margin: auto;
     font-family: 'Roboto Light', sans-serif;
     font-size: 1.2em;
@@ -136,7 +139,6 @@ a:first-child i {
     margin: auto;
     height: 100%;
     max-height: 48px;
-    /*max-width: 1400px;*/
 }
 
 .main-wrapper div {
@@ -147,14 +149,12 @@ a:first-child i {
     height: 100%;
     width: 150px;
     position: fixed;
-    background: rgb(59, 58, 58);
-    color: white;
+    background: #2f3e46;
+    color: #edf2f4;
     display: flex;
     flex-direction: column;
     align-items: center;
     z-index: 1;
-    /*top: 0;*/
-    /*bottom: -50px;*/
 }
 
 .title-year-inputs {
@@ -178,7 +178,6 @@ a:first-child i {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /*grid-column: 4 / span 8;*/
 }
 
 .info-box {
@@ -188,7 +187,6 @@ a:first-child i {
     gap: 10px 0;
     grid-template: repeat(6, 1fr)/1fr;
     overflow-y: auto;
-    /*align-self: baseline;*/
     text-align: center;
     color: white;
     max-width: 539px;
@@ -208,6 +206,7 @@ a:first-child i {
     flex-direction: column;
     z-index: 2;
     align-items: center;
+    color: #edf2f4;
 }
 
 .edit-movie-modal {
@@ -223,20 +222,14 @@ a:first-child i {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.edit-movie {
-
+    color: #edf2f4;
+    z-index: 2;
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
-}
-
-.img {
-
 }
 
 .movie-poster {
@@ -246,7 +239,7 @@ input::-webkit-inner-spin-button {
 
 
 .star {
-    color: #bbb;
+    color: #edf2f4;
     font-size: 1.5em;
 }
 
@@ -295,18 +288,8 @@ dl {
 
 /* beginning of media queries */
 
-@media screen and (min-width: 456px) {
-    .movie-select {
-        /*grid-area: 12 / 1 / span 11 / span 12;*/
-    }
-
-}
 
 @media screen and (min-width: 596px) {
-    /*.info-box {*/
-    /*    align-self: flex-start;*/
-    /*}*/
-
     .info-box {
         grid-template: 1fr 1fr 1fr/ 1fr 1fr;
 
@@ -314,23 +297,12 @@ dl {
 }
 
 @media screen and (min-width: 768px) {
-    .info-box {
-        /*grid-area: 5 / 8 / span 4 / span 4;*/
-        /*height: 200px;*/
-    }
-    /*.movie-container {*/
-    /*    grid-area: 3 / 2 / span 8 / span 8;*/
-    /*    !*grid-column: 4 / span 8;*!*/
-    /*}*/
     .movie-select {
-        /*position: absolute;*/
-        /*top: 900px;*/
         color: white;
         width: 100vw;
         display: flex;
         overflow-x: auto;
         text-align: center;
-        /*overflow: auto;*/
     }
     dl {
         display: inline-flex;
@@ -342,6 +314,5 @@ dl {
         width: 50%;
 
     }
-
 }
 

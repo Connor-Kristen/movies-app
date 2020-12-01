@@ -1,23 +1,22 @@
 // for setting HTML
-
 "use strict";
+$('.banner-add, .nav').hide()
 $(document).ready(function () {
+    //make sure canvas clear interval does not keep going
+clearInterval(canvInt)
 
-    $(".main-container").hide();
-    const infoBox = $('.info-box');
+    //selectors for html containers
     const addMovie = $('#add-movie');
     const movieSelect = $(".movie-select");
     const editModal = $('.edit-movie-modal');
 
-    $('.banner-add, .main-container, .nav').hide()
-
+    //hide modals by default
+    $('.modal').hide();
+    $('.edit-movie-modal').hide();
     moviesObjArr().then(function () {
         $('.loading-screen').hide();
-        $('.banner-add, .main-container, .nav').show()
+        $('.banner-add, .nav').show()
     });
-
-    moviesObjArr().then(console.log);
-
 
     const buildHtml = ({title, poster, id}) => `
              <dl class="movieInfo">
@@ -48,7 +47,6 @@ $(document).ready(function () {
     const setHtml = () => {
         moviesObjArr().then(data => {
             for (const movies of data) {
-                // infoBox.html(buildHtml(movies));
                 movieSelect.append(buildHtml(movies))
             }
         })
@@ -172,8 +170,6 @@ $(document).ready(function () {
     }
 
 
-    $('.modal').hide();
-    $('.edit-movie-modal').hide();
 
     $('#add').on('click', () => {
         $('.modal').fadeIn();
@@ -196,10 +192,12 @@ $(document).ready(function () {
         }
     })
 
+    $('#color').css('opacity', 0);
     $('.side-bar').css({width: 0})
     $('.movie-functions').css('font-size', 0)
     $('.hamburger').on("click", function() {
         $('.side-bar').animate({width: "150px"}, 300);
+        $('#color').animate({'opacity': 1}, 300);
         $('.movie-functions').animate({'font-size': '1em'}, 300)
     })
 
@@ -207,6 +205,7 @@ $(document).ready(function () {
         if ($(e.target).closest('.side-bar, .hamburger').length === 0) {
             $('.side-bar').animate({"width": 0}, 300);
             $('.movie-functions').animate({'font-size': 0}, 300);
+            $('#color').animate({'opacity': 0}, 300);
         }
     })
 
@@ -228,7 +227,6 @@ $(document).ready(function () {
                 html += "</div>"
             }
         })
-        // console.log(movie);
         return html;
     }
 
@@ -240,7 +238,6 @@ $(document).ready(function () {
             })
 
     })
-
 
     $(window).scroll(function () {
     const currentPos = $(this).scrollTop();
@@ -254,6 +251,7 @@ $(document).ready(function () {
 })
 
     $('#close-side').on("click", function () {
+        $('#color').animate({'opacity': 0}, 300);
         $('.side-bar').animate({"width": 0}, 300);
         $('.movie-functions').animate({'font-size': 0}, 300);
     })
@@ -262,12 +260,10 @@ $(document).ready(function () {
         $(this).css('color', 'yellow')
     })
         .on('mouseout', '.star',function () {
-            $(this).css('color', '#bbb')
+            $(this).css('color', '#edf2f4')
         });
 
     $('.fa-search').on("click", function() {
-        // $('#massive-search, #search-bar').animate({width: "100vw"}, 300);
-        // $('#massive-search').show()
         $('#search-bar').css("opacity", 1);
         $('#massive-search').css("background", "rgba(0,0,0,.7");
         $('div:not(#massive-search)').css("filter", "blur(3px)");
