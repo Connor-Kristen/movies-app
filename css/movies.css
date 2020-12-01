@@ -9,7 +9,7 @@ body, html {
     margin: 0;
     padding: 0;
     background: #2b2d42;
-    overflow-x: hidden;
+    /*overflow-x: hidden;*/
 }
 
 .loading-screen {
@@ -147,6 +147,12 @@ a:first-child i {
     flex-direction: column;
     align-items: center;
     z-index: 1;
+    font-family: 'Comfortaa', sans-serif;
+    /*justify-content: space-evenly;*/
+}
+
+.movie-title {
+    font-family: 'Yanone Kaffeesatz', sans-serif;
 }
 
 .close {
@@ -160,8 +166,9 @@ a:first-child i {
 }
 
 #edit {
-    flex-grow: 1;
-    margin-bottom: 20px;
+    /*flex-grow: 1;*/
+    /* we can bring back the flex grow once we get the sidebar to stick */
+    margin-bottom: 500px;
 }
 
 #add-movie {
@@ -294,12 +301,10 @@ dl {
 .footer {
     grid-area: 17 / 1 / span 2 / span 12;
     background: black;
-
 }
 
 
 /* beginning of media queries */
-
 
 @media screen and (min-width: 596px) {
     .info-box {
