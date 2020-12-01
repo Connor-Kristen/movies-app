@@ -31,9 +31,9 @@ $(document).ready(function () {
         `<div class="initial-pick" data-attribute=${id}>${title}</div>`
     //render the title options
     const renderEditTitles = async () => {
-        try {
-             await moviesObjArr()
-             await (data => {
+
+           moviesObjArr()
+               .then(data => {
                 let html = ""
                 for (const [i, movies] of data.entries()) {
                     if (i === 0) {
@@ -43,9 +43,9 @@ $(document).ready(function () {
                 }
                 editModal.html(html);
             })
-        } catch(err) {
-            console.error(err);
-        }
+            .catch(console.error)
+
+
     }
     //render the cards of movies to select from to
     const setHtml = () => {
