@@ -31053,6 +31053,21 @@ video {
           animation: bounce 1s infinite;
 }
 
+.scroll-snap-none {
+  -ms-scroll-snap-type: none;
+      scroll-snap-type: none;
+}
+
+.scroll-snap-x {
+  -ms-scroll-snap-type: x;
+      scroll-snap-type: x;
+}
+
+.scroll-snap-y {
+  -ms-scroll-snap-type: y;
+      scroll-snap-type: y;
+}
+
 @media (min-width: 640px) {
   .sm\:space-y-0 > :not([hidden]) ~ :not([hidden]) {
     --tw-space-y-reverse: 0;

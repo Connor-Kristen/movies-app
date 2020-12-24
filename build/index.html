@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="h-screen">
+<html lang="en" class="h-screen w-screen">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport"
@@ -10,7 +10,7 @@
 </head>
 <body class="bg-blue-900 h-screen">
 <!--main grid wrapper-->
-<div class="grid grid-cols-3 h-full grid-auto-rows">
+<div class="grid grid-cols-3 h-full grid-auto-rows pb-1">
 	<nav class="h-12 bg-gray-500 col-span-3">
 		<div class="flex items-center justify-center h-full max-w-5xl m-auto">
 			<i class="fas fa-bars px-2 text-2xl md:text-3xl flex-grow"></i>
@@ -20,30 +20,48 @@
 		</div>
 	</nav>
 
-	<div class="w-full bg-blue-500 col-span-3 mt-4">
+	<div class="w-full col-span-3 mt-4 flex flex-wrap text-white">
 		<div class="w-80 flex items-center">
 			<img src="https://m.media-amazon.com/images/M/MV5BYzUxZDI3MjktZmM4YS00MzdjLWE5MzctMmI4M2ViMDgxMmUzXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg" alt="" class="inline w-9/12 mx-auto py-3">
 		</div>
-		<p class="text-sm leading-6">
-			genre: Comedy, Horror, Musical, Romance, Sci-Fi
-			director: Frank Oz
-			plot: A nerdy florist finds his chance for success and romance with the help of a giant man-eating plant who demands to be fed.
-			actors: Levi Stubbs, Rick Moranis, Ellen Greene, Vincent Gardenia
-		</p>
+		<div class="w-72 text-center mx-auto">
+			<p class="text-sm leading-6">
+				genre: Comedy, Horror, Musical, Romance, Sci-Fi
+				director: Frank Oz
+				plot: A nerdy florist finds his chance for success and romance with the help of a giant man-eating plant who demands to be fed.
+				actors: Levi Stubbs, Rick Moranis, Ellen Greene, Vincent Gardenia
+			</p>
+		</div>
 	</div>
 
 
-	<div class="h-80 bg-gray-700 mx-2 col-span-3 flex items-center mt-4">
-		<div class="w-64 flex md:inline-flex m-auto md:m-2  flex-col items-center justify-between bg-gray-400">
-			<img src="https://m.media-amazon.com/images/M/MV5BYzUxZDI3MjktZmM4YS00MzdjLWE5MzctMmI4M2ViMDgxMmUzXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg" alt="" class="max-w-7/12 inline pt-2">
+	<div class=" bg-gray-700 m-3 col-span-3 flex py-2 items-center overflow-x-auto h-96 scroll-snap-y" id="carousel">
+		<div class="absolute left-4 bg-white w-9 h-9 flex justify-center items-center rounded-full z-10">
+			<i class="fas fa-arrow-left" id="left-arrow"></i>
+		</div>
+		<div id="lsh" class="relative flex-none flex md:inline-flex md:m-2 flex-col items-center justify-between object-cover">
+			<img src="https://m.media-amazon.com/images/M/MV5BYzUxZDI3MjktZmM4YS00MzdjLWE5MzctMmI4M2ViMDgxMmUzXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg" alt="" class="max-w-7/12 inline">
 			<div class="w-1/2">
 				<p class="text-xl pt-2">Little Shop Of Horrors</p>
 			</div>
 		</div>
+		<div id="lsh2" class="relative flex-none flex md:inline-flex m-auto md:m-2 flex-col items-center justify-between ">
+			<img src="https://m.media-amazon.com/images/M/MV5BMjA5NDQyMjc2NF5BMl5BanBnXkFtZTcwMjg5ODcyMw@@._V1_SX300.jpg" alt="" class="max-w-7/12 inline pt-2">
+			<div class="w-1/2">
+				<p class="text-xl pt-2">Little Shop Of Horrors</p>
+			</div>
+		</div>
+		<div class="absolute right-4 bg-white w-9 h-9 flex justify-center items-center rounded-full z-10">
+			<i class="fas fa-arrow-right" id="right-arrow"></i>
+		</div>
+	</div>
 
+	<div class="h-12">
 	</div>
 </div>
 
 <script src="https://kit.fontawesome.com/6e57a86385.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="js/index.js"></script>
 </body>
 </html>
