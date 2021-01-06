@@ -19,7 +19,7 @@
 }
 
 .carousel_btn {
-    @apply absolute top-1/2 bg-white z-20 mx-2 bg-opacity-20 h-10 w-10 p-2 rounded-full focus:outline-none focus:ring focus:ring-gray-300 transform -translate-y-1/2
+    @apply absolute top-1/2 bg-white z-20 mx-2 bg-opacity-60 h-10 w-10 p-2 rounded-full focus:outline-none focus:ring focus:ring-gray-300 transform -translate-y-1/2
 }
 
 .slick-next {
@@ -31,7 +31,12 @@
 }
 
 .pill {
-    @apply w-20 m-1 rounded-full p-0.5 bg-white bg-opacity-50 inline-block
+    @apply w-20 m-1 rounded-full p-0.5 bg-white bg-opacity-30 inline-block
+}
+
+.page {
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 @tailwind utilities;

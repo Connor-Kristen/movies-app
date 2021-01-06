@@ -1,4 +1,4 @@
-const moviesURL = 'https://mewing-typical-stage.glitch.me/movies';
+const moviesURL = ' http://localhost:3000/movies';
 const omdbMainURL =  `http://www.omdbapi.com/?apikey=${omdbKey}`
 const header = {'Content-Type': 'application/json'};
 // i=tt3896198&

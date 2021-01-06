@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "postcss css/style.css -o build/css/style.css"
+    "build": "postcss css/style.css -o build/css/style.css",
+    "start": "es-dev-server --app-index build/index.html --node-resolve --watch --open"
   },
   "repository": {
     "type": "git",
@@ -21,5 +22,8 @@
     "autoprefixer": "^10.1.0",
     "postcss-cli": "^8.3.1",
     "tailwindcss": "^2.0.2"
+  },
+  "devDependencies": {
+    "es-dev-server": "^2.0.2"
   }
 }
