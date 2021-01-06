@@ -1,0 +1,302 @@
+{
+  "movies": [
+    {
+      "title": "Little Shop of Horrors",
+      "year": "1986",
+      "criticRatings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "7.0/10"
+        },
+        {
+          "Source": "Rotten Tomatoes",
+          "Value": "90%"
+        },
+        {
+          "Source": "Metacritic",
+          "Value": "81/100"
+        }
+      ],
+      "userRating": 5,
+      "poster": "https://m.media-amazon.com/images/M/MV5BYzUxZDI3MjktZmM4YS00MzdjLWE5MzctMmI4M2ViMDgxMmUzXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg",
+      "genre": "Comedy, Horror, Musical, Romance, Sci-Fi",
+      "director": "Frank Oz",
+      "plot": "A nerdy florist finds his chance for success and romance with the help of a giant man-eating plant who demands to be fed.",
+      "actors": "Levi Stubbs, Rick Moranis, Ellen Greene, Vincent Gardenia",
+      "id": 1
+    },
+    {
+      "title": "How to Train Your Dragon",
+      "year": "2010",
+      "criticRatings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "8.1/10"
+        },
+        {
+          "Source": "Rotten Tomatoes",
+          "Value": "99%"
+        },
+        {
+          "Source": "Metacritic",
+          "Value": "75/100"
+        }
+      ],
+      "userRating": 5,
+      "poster": "https://m.media-amazon.com/images/M/MV5BMjA5NDQyMjc2NF5BMl5BanBnXkFtZTcwMjg5ODcyMw@@._V1_SX300.jpg",
+      "genre": "Animation, Action, Adventure, Family, Fantasy",
+      "director": "Dean DeBlois, Chris Sanders",
+      "plot": "A hapless young Viking who aspires to hunt dragons becomes the unlikely friend of a young dragon himself, and learns there may be more to the creatures than he assumed.",
+      "actors": "Jay Baruchel, Gerard Butler, Craig Ferguson, America Ferrera",
+      "id": 2
+    },
+    {
+      "title": "The Little Rascals",
+      "year": "1994",
+      "criticRatings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "6.3/10"
+        },
+        {
+          "Source": "Rotten Tomatoes",
+          "Value": "23%"
+        },
+        {
+          "Source": "Metacritic",
+          "Value": "45/100"
+        }
+      ],
+      "userRating": 5,
+      "poster": "https://m.media-amazon.com/images/M/MV5BYWE1MzdmNmMtNWQwZS00MTVkLTk3MDMtYzVkOWZlOTczMDIwXkEyXkFqcGdeQXVyNjg4NzYzMzA@._V1_SX300.jpg",
+      "genre": "Comedy, Family, Romance",
+      "director": "Penelope Spheeris",
+      "plot": "Alfalfa is wooing Darla and his \"He-Man-Woman-Hating\" friends attempt to sabotage the relationship.",
+      "actors": "Travis Tedford, Kevin Jamal Woods, Jordan Warkol, Zachary Mabry",
+      "id": 3
+    },
+    {
+      "title": "How to Train Your Dragon 2",
+      "year": "2014",
+      "criticRatings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "7.8/10"
+        },
+        {
+          "Source": "Rotten Tomatoes",
+          "Value": "91%"
+        },
+        {
+          "Source": "Metacritic",
+          "Value": "76/100"
+        }
+      ],
+      "userRating": 5,
+      "poster": "https://m.media-amazon.com/images/M/MV5BMzMwMTAwODczN15BMl5BanBnXkFtZTgwMDk2NDA4MTE@._V1_SX300.jpg",
+      "genre": "Animation, Action, Adventure, Family, Fantasy",
+      "director": "Dean DeBlois",
+      "plot": "When Hiccup and Toothless discover an ice cave that is home to hundreds of new wild dragons and the mysterious Dragon Rider, the two friends find themselves at the center of a battle to protect the peace.",
+      "actors": "Jay Baruchel, Cate Blanchett, Gerard Butler, Craig Ferguson",
+      "id": 4
+    },
+    {
+      "title": "How to Train Your Dragon: The Hidden World",
+      "year": "2019",
+      "criticRatings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "7.5/10"
+        },
+        {
+          "Source": "Rotten Tomatoes",
+          "Value": "91%"
+        },
+        {
+          "Source": "Metacritic",
+          "Value": "71/100"
+        }
+      ],
+      "userRating": 5,
+      "poster": "https://m.media-amazon.com/images/M/MV5BMjIwMDIwNjAyOF5BMl5BanBnXkFtZTgwNDE1MDc2NTM@._V1_SX300.jpg",
+      "genre": "Animation, Action, Adventure, Family, Fantasy",
+      "director": "Dean DeBlois",
+      "plot": "When Hiccup discovers Toothless isn't the only Night Fury, he must seek \"The Hidden World\", a secret Dragon Utopia before a hired tyrant named Grimmel finds it first.",
+      "actors": "Jay Baruchel, America Ferrera, F. Murray Abraham, Cate Blanchett",
+      "id": 5
+    },
+    {
+      "title": "Resident Evil",
+      "year": "2002",
+      "criticRatings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "6.7/10"
+        },
+        {
+          "Source": "Rotten Tomatoes",
+          "Value": "35%"
+        },
+        {
+          "Source": "Metacritic",
+          "Value": "33/100"
+        }
+      ],
+      "userRating": 5,
+      "poster": "https://m.media-amazon.com/images/M/MV5BZmI1ZGRhNDYtOGVjZC00MmUyLThlNTktMTQyZGE3MzE1ZTdlXkEyXkFqcGdeQXVyNDE5MTU2MDE@._V1_SX300.jpg",
+      "genre": "Action, Horror, Sci-Fi",
+      "director": "Paul W.S. Anderson",
+      "plot": "A special military unit fights a powerful, out-of-control supercomputer and hundreds of scientists who have mutated into flesh-eating creatures after a laboratory accident.",
+      "actors": "Ryan McCluskey, Oscar Pearce, Indra Ové, Anna Bolt",
+      "id": 6
+    },
+    {
+      "title": "Avengers: Endgame",
+      "year": "2019",
+      "criticRatings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "8.4/10"
+        },
+        {
+          "Source": "Rotten Tomatoes",
+          "Value": "94%"
+        },
+        {
+          "Source": "Metacritic",
+          "Value": "78/100"
+        }
+      ],
+      "userRating": 5,
+      "poster": "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",
+      "genre": "Action, Adventure, Drama, Sci-Fi",
+      "director": "Anthony Russo, Joe Russo",
+      "plot": "After the devastating events of Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe.",
+      "actors": "Robert Downey Jr., Chris Evans, Mark Ruffalo, Chris Hemsworth",
+      "id": 7
+    },
+    {
+      "title": "Frozen",
+      "year": "2013",
+      "criticRatings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "7.4/10"
+        },
+        {
+          "Source": "Rotten Tomatoes",
+          "Value": "90%"
+        },
+        {
+          "Source": "Metacritic",
+          "Value": "75/100"
+        }
+      ],
+      "userRating": 4,
+      "poster": "https://m.media-amazon.com/images/M/MV5BMTQ1MjQwMTE5OF5BMl5BanBnXkFtZTgwNjk3MTcyMDE@._V1_SX300.jpg",
+      "genre": "Animation, Adventure, Comedy, Family, Fantasy, Musical",
+      "director": "Chris Buck, Jennifer Lee",
+      "plot": "When the newly crowned Queen Elsa accidentally uses her power to turn things into ice to curse her home in infinite winter, her sister Anna teams up with a mountain man, his playful reindeer, and a snowman to change the weather condition.",
+      "actors": "Kristen Bell, Idina Menzel, Jonathan Groff, Josh Gad",
+      "id": 8
+    },
+    {
+      "title": "Into the Unknown: Making Frozen 2",
+      "year": "2020",
+      "criticRatings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "8.5/10"
+        },
+        {
+          "Source": "Rotten Tomatoes"
+        },
+        {
+          "Source": "Metacritic"
+        }
+      ],
+      "userRating": 4,
+      "poster": "https://m.media-amazon.com/images/M/MV5BYmQ5ZWE0ZWUtNzY0Zi00MmZhLWIzNTgtNDk1MTBiMDNmMmZjXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_SX300.jpg",
+      "genre": "Documentary, Family",
+      "director": "N/A",
+      "plot": "With less than a year until the world premiere of Frozen II (2019), the filmmakers, artists, songwriters and cast open their doors to cameras for a six-part documentary series to reveal the...",
+      "actors": "Kristen, Chris Buck, Peter Del Vecho, Jennifer Lee",
+      "id": 9
+    },
+    {
+      "title": "The Lord of the Rings: The Two Towers",
+      "year": "2002",
+      "criticRatings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "8.7/10"
+        },
+        {
+          "Source": "Rotten Tomatoes",
+          "Value": "95%"
+        },
+        {
+          "Source": "Metacritic",
+          "Value": "87/100"
+        }
+      ],
+      "userRating": 5,
+      "poster": "https://m.media-amazon.com/images/M/MV5BZGMxZTdjZmYtMmE2Ni00ZTdkLWI5NTgtNjlmMjBiNzU2MmI5XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg",
+      "genre": "Action, Adventure, Drama, Fantasy",
+      "director": "Peter Jackson",
+      "plot": "While Frodo and Sam edge closer to Mordor with the help of the shifty Gollum, the divided fellowship makes a stand against Sauron's new ally, Saruman, and his hordes of Isengard.",
+      "actors": "Bruce Allpress, Sean Astin, John Bach, Sala Baker",
+      "id": 10
+    },
+    {
+      "title": "Creepshow",
+      "year": "1982",
+      "criticRatings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "6.9/10"
+        },
+        {
+          "Source": "Rotten Tomatoes",
+          "Value": "73%"
+        },
+        {
+          "Source": "Metacritic",
+          "Value": "59/100"
+        }
+      ],
+      "userRating": 5,
+      "poster": "https://m.media-amazon.com/images/M/MV5BOTU3NGIyZTctOWEyMS00MGIyLWFkZWMtMTg0ODE2MjExNGZlXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
+      "genre": "Comedy, Fantasy, Horror",
+      "director": "George A. Romero",
+      "plot": "An anthology which tells five terrifying tales inspired by the E.C. horror comic books of the 1950s.",
+      "actors": "Hal Holbrook, Adrienne Barbeau, Fritz Weaver, Leslie Nielsen",
+      "id": 11
+    },
+    {
+      "title": "Moonstruck",
+      "year": "1987",
+      "criticRatings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "7.1/10"
+        },
+        {
+          "Source": "Rotten Tomatoes",
+          "Value": "94%"
+        },
+        {
+          "Source": "Metacritic",
+          "Value": "83/100"
+        }
+      ],
+      "userRating": 5,
+      "poster": "https://m.media-amazon.com/images/M/MV5BMjIwMDY0NzYyMF5BMl5BanBnXkFtZTcwOTE5NDk0NA@@._V1_SX300.jpg",
+      "genre": "Comedy, Drama, Romance",
+      "director": "Norman Jewison",
+      "plot": "Loretta Castorini, a bookkeeper from Brooklyn, New York, finds herself in a difficult situation when she falls for the brother of the man she has agreed to marry.",
+      "actors": "Cher, Nicolas Cage, Vincent Gardenia, Olympia Dukakis",
+      "id": 12
+    }
+  ]
+}
