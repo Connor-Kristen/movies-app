@@ -7,7 +7,11 @@ module.exports = {
       '7/12': '58.333333%',
       '10/12': '83.333333%'
     },
-    extend: {},
+    extend: {
+      width: {
+        '9/10': '90%'
+      }
+    },
   },
   variants: {
     extend: {},

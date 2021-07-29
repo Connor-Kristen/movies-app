@@ -2,4 +2,54 @@
 
 @tailwind componenets;
 
+.carousel_img {
+    @apply h-60 inline-block
+}
+
+.carousel_slide {
+  @apply focus:ring-1 focus:ring-gray-300 my-1
+}
+
+.carousel_slide.slick-slide {
+    @apply flex justify-center
+}
+
+.carousel {
+    @apply relative py-2 my-12 text-gray-200
+}
+
+.carousel_btn {
+    @apply absolute top-1/2 bg-white z-20 mx-2 bg-opacity-60 h-10 w-10 p-2 rounded-full focus:outline-none focus:ring focus:ring-gray-300 transform -translate-y-1/2
+}
+
+.slick-next {
+    @apply right-0
+}
+
+.slick-slide {
+    @apply focus:outline-none
+}
+
+.pill {
+    @apply w-20 m-1 rounded-full p-0.5 bg-white bg-opacity-30 inline-block
+}
+
+.page {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
 @tailwind utilities;
+
+
+@layer utilities {
+    .scroll-snap-none {
+        scroll-snap-type: none;
+    }
+    .scroll-snap-x {
+        scroll-snap-type: x;
+    }
+    .scroll-snap-y {
+        scroll-snap-type: y;
+    }
+}

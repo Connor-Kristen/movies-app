@@ -3,3 +3,4 @@
 .DS_STORE
 js/keys.js
 node_modules
+build/css/style.css
